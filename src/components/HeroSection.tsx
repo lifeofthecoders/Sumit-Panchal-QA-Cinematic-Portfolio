@@ -118,7 +118,7 @@ export const HeroSection: React.FC = () => {
             className="text-xs sm:text-sm font-semibold tracking-[0.35em] uppercase text-[#EAD8C7] hover:opacity-75 transition-opacity"
             style={{ fontFamily: "'Montserrat', sans-serif" }}
           >
-            LOHITHA.
+            SUMIT PANCHAL.
           </a>
 
           {/* Navigation Links */}
@@ -173,12 +173,12 @@ export const HeroSection: React.FC = () => {
               >
                 {/* Line 1: I BUILD */}
                 <span className="block text-transparent bg-clip-text bg-gradient-to-b from-[#FFFFFF] via-[#D5CBC0] to-[#605448] drop-shadow-[0_4px_12px_rgba(0,0,0,0.85)]">
-                  I BUILD
+                  I BUIILD
                 </span>
 
-                {/* Line 2: DIGITAL */}
+                {/* Line 2: QUALITY */}
                 <span className="block text-transparent bg-clip-text bg-gradient-to-b from-[#F7E7C4] via-[#C99E5D] to-[#543B1A] drop-shadow-[0_8px_25px_rgba(201,158,93,0.35)]">
-                  DIGITAL
+                  QUALITY
                 </span>
 
                 {/* Line 3: EXPERIENCES */}
@@ -194,8 +194,7 @@ export const HeroSection: React.FC = () => {
                 className="text-[10px] sm:text-[11px] md:text-xs font-normal tracking-[0.28em] uppercase text-[#C4B29E]"
                 style={{ fontFamily: "'Montserrat', sans-serif" }}
               >
-                FULL STACK DEVELOPER <span className="text-[#8C6D4F] mx-1">•</span> UI/UX DESIGNER <span className="text-[#8C6D4F] mx-1">•</span> DATA SCIENCE
-              </p>
+                MANUAL QA ANALYST <span className="text-[#8C6D4F] mx-1">•</span> TESTING ENTHUSIAST <span className="text-[#8C6D4F] mx-1">•</span> QUALITY DRIVEN </p>
             </motion.div>
 
             {/* 3-Line Description */}
@@ -205,9 +204,9 @@ export const HeroSection: React.FC = () => {
               style={{ fontFamily: "'Montserrat', sans-serif" }}
             >
               <p>
-                I turn bold ideas into seamless digital experiences.
+                I turn complex requirements into seamless user experiences.
                 <br />
-                Where frontend meets powerful backend, and code transforms vision into impact.
+                Where quality meets functionality, and testing transforms ideas into trusted products.
               </p>
             </motion.div>
 
@@ -267,8 +266,8 @@ export const HeroSection: React.FC = () => {
               className="text-[9.5px] font-medium tracking-[0.24em] uppercase text-[#E0D3C5] space-y-1 mb-3"
               style={{ fontFamily: "'Montserrat', sans-serif" }}
             >
-              <p>CODE IS MY CRAFT.</p>
-              <p>IMPACT IS MY GOAL.</p>
+              <p>QUALITY IS MY CRAFT.</p>
+              <p>RELIABILITY IS MY GOAL.</p>
             </div>
 
             {/* 3. Gold Accent Line */}
@@ -282,10 +281,22 @@ export const HeroSection: React.FC = () => {
                 letterSpacing: '0.04em',
               }}
             >
-              Lohitha
+              Sumit Panchal
             </div>
+
+            {/* 4. YOUR JOB ROLE */}
+            <div 
+              className="text-[9.5px] font-medium tracking-[0.24em] uppercase text-[#E0D3C5] space-y-1 mb-3"
+              style={{ fontFamily: "'Montserrat', sans-serif" }}
+            >
+              <p>QUALITY ANALYST.</p>
+            </div>
+
+
           </motion.div>
         </div>
+
+
 
         {/* Bottom Spacer */}
         <div className="h-2" />

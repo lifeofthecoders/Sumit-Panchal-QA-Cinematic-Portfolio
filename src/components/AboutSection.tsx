@@ -120,10 +120,10 @@ export const AboutSection: React.FC = () => {
                 style={{ fontFamily: "'Bebas Neue', sans-serif" }}
               >
                 <span className="block text-transparent bg-clip-text bg-gradient-to-b from-[#FFFFFF] via-[#D5CBC0] to-[#605448] drop-shadow-[0_4px_10px_rgba(0,0,0,0.85)]">
-                  I DON'T JUST WRITE CODE.
+                  I DON'T JUST FIND BUGS.
                 </span>
                 <span className="block text-transparent bg-clip-text bg-gradient-to-b from-[#F7E7C4] via-[#C99E5D] to-[#543B1A] drop-shadow-[0_8px_25px_rgba(201,158,93,0.3)]">
-                  I BUILD WHAT'S NEXT.
+                  I ENSURE BETTER USER EXPERIENCES.
                 </span>
               </h2>
             </motion.div>
@@ -134,63 +134,226 @@ export const AboutSection: React.FC = () => {
               className="text-xs sm:text-sm md:text-[14.5px] font-light text-[#B3A497] leading-[1.85] tracking-wide mb-10 max-w-xl"
               style={{ fontFamily: "'Montserrat', sans-serif" }}
             >
-              I'm <span className="text-[#F3DBB3] font-medium">Damisetti Shamya Lohitha</span>, a Full Stack Developer and Data Science student specializing in building scalable web architectures, AI-integrated platforms, and refined digital experiences. With a strong algorithmic foundation and a focus on clean engineering, I turn complex requirements into impactful products.
+              I'm <span className="text-[#F3DBB3] font-medium">Sumit Panchal</span>, a <span className="text-[#F3DBB3] font-medium">Manual Quality Analyst (QA)</span> with 5+ years of experience in software testing, quality assurance, and delivering reliable, user-friendly digital products. I specialize in functional, regression, integration, and user acceptance testing, with a strong focus on detail, process improvement, and customer satisfaction. I turn requirements into high-quality products.
             </motion.p>
 
-            {/* Concise 4-Item Achievement Metrics Grid */}
-            <motion.div 
+            {/* Concise 4-Item QA Achievement Metrics Grid */}
+            <motion.div
               variants={fadeUpVariants}
               className="grid grid-cols-2 sm:grid-cols-4 gap-6 pt-6 pb-2 border-t border-[#8C6D4F]/25"
             >
               {/* Stat 1 */}
-              <div className="flex flex-col">
-                <span 
+              <div className="flex flex-col items-start">
+                <div className="mb-3 text-[#D4AF37]">
+                  <svg
+                    width="32"
+                    height="32"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="drop-shadow-[0_0_8px_rgba(212,175,55,0.35)]"
+                  >
+                    <path
+                      d="M6 3H14L18 7V21H6V3Z"
+                      stroke="currentColor"
+                      strokeWidth="1.5"
+                      strokeLinejoin="round"
+                    />
+                    <path
+                      d="M14 3V7H18"
+                      stroke="currentColor"
+                      strokeWidth="1.5"
+                      strokeLinejoin="round"
+                    />
+                    <path
+                      d="M9 12L10.5 13.5L14 10"
+                      stroke="currentColor"
+                      strokeWidth="1.5"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                    <circle
+                      cx="17.5"
+                      cy="17.5"
+                      r="3"
+                      stroke="currentColor"
+                      strokeWidth="1.5"
+                    />
+                    <path
+                      d="M19.7 19.7L21 21"
+                      stroke="currentColor"
+                      strokeWidth="1.5"
+                      strokeLinecap="round"
+                    />
+                  </svg>
+                </div>
+
+                <span
                   className="text-3xl sm:text-4xl font-light text-[#F4EBE2] tracking-tight"
                   style={{ fontFamily: "'Bebas Neue', sans-serif" }}
                 >
-                  1200+
+                  5+
                 </span>
-                <span className="text-[10px] font-medium tracking-[0.22em] uppercase text-[#A8988B] mt-0.5">
-                  DSA Solved
+
+                <span className="text-[10px] font-medium tracking-[0.22em] uppercase text-[#A8988B] mt-1 leading-relaxed">
+                  YEARS OF QA
+                  <br />
+                  EXPERIENCE
                 </span>
               </div>
 
               {/* Stat 2 */}
-              <div className="flex flex-col">
-                <span 
+              <div className="flex flex-col items-start">
+                <div className="mb-3 text-[#D4AF37]">
+                  <svg
+                    width="32"
+                    height="32"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="drop-shadow-[0_0_8px_rgba(212,175,55,0.35)]"
+                  >
+                    <circle
+                      cx="12"
+                      cy="12"
+                      r="8"
+                      stroke="currentColor"
+                      strokeWidth="1.5"
+                    />
+                    <path
+                      d="M12 7V12L15 14"
+                      stroke="currentColor"
+                      strokeWidth="1.5"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                    <path
+                      d="M4 4L6 6M18 6L20 4"
+                      stroke="currentColor"
+                      strokeWidth="1.5"
+                      strokeLinecap="round"
+                    />
+                  </svg>
+                </div>
+
+                <span
                   className="text-3xl sm:text-4xl font-light text-[#D4AF37] tracking-tight"
                   style={{ fontFamily: "'Bebas Neue', sans-serif" }}
                 >
-                  9.07
+                  5000+
                 </span>
-                <span className="text-[10px] font-medium tracking-[0.22em] uppercase text-[#A8988B] mt-0.5">
-                  B.Tech CGPA
+
+                <span className="text-[10px] font-medium tracking-[0.22em] uppercase text-[#A8988B] mt-1 leading-relaxed">
+                  TEST CASES
+                  <br />
+                  DESIGNED
                 </span>
               </div>
 
               {/* Stat 3 */}
-              <div className="flex flex-col">
-                <span 
+              <div className="flex flex-col items-start">
+                <div className="mb-3 text-[#D4AF37]">
+                  <svg
+                    width="32"
+                    height="32"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="drop-shadow-[0_0_8px_rgba(212,175,55,0.35)]"
+                  >
+                    <circle
+                      cx="12"
+                      cy="12"
+                      r="8"
+                      stroke="currentColor"
+                      strokeWidth="1.5"
+                    />
+                    <circle
+                      cx="12"
+                      cy="12"
+                      r="4"
+                      stroke="currentColor"
+                      strokeWidth="1.5"
+                    />
+                    <circle
+                      cx="12"
+                      cy="12"
+                      r="1.5"
+                      fill="currentColor"
+                    />
+                    <path
+                      d="M12 2V5M12 19V22M2 12H5M19 12H22"
+                      stroke="currentColor"
+                      strokeWidth="1.5"
+                      strokeLinecap="round"
+                    />
+                  </svg>
+                </div>
+
+                <span
                   className="text-3xl sm:text-4xl font-light text-[#F4EBE2] tracking-tight"
                   style={{ fontFamily: "'Bebas Neue', sans-serif" }}
                 >
-                  40+
+                  50+
                 </span>
-                <span className="text-[10px] font-medium tracking-[0.22em] uppercase text-[#A8988B] mt-0.5">
-                  Industry-Grade Projects
+
+                <span className="text-[10px] font-medium tracking-[0.22em] uppercase text-[#A8988B] mt-1 leading-relaxed">
+                  RELEASES
+                  <br />
+                  SUPPORTED
                 </span>
               </div>
 
               {/* Stat 4 */}
-              <div className="flex flex-col">
-                <span 
+              <div className="flex flex-col items-start">
+                <div className="mb-3 text-[#D4AF37]">
+                  <svg
+                    width="32"
+                    height="32"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="drop-shadow-[0_0_8px_rgba(212,175,55,0.35)]"
+                  >
+                    <circle
+                      cx="12"
+                      cy="8"
+                      r="3"
+                      stroke="currentColor"
+                      strokeWidth="1.5"
+                    />
+                    <path
+                      d="M5 20C5 16.6863 8.13401 14 12 14C15.866 14 19 16.6863 19 20"
+                      stroke="currentColor"
+                      strokeWidth="1.5"
+                      strokeLinecap="round"
+                    />
+                    <path
+                      d="M18 5C19.6569 5 21 6.34315 21 8C21 9.65685 19.6569 11 18 11"
+                      stroke="currentColor"
+                      strokeWidth="1.5"
+                      strokeLinecap="round"
+                    />
+                    <path
+                      d="M6 5C4.34315 5 3 6.34315 3 8C3 9.65685 4.34315 11 6 11"
+                      stroke="currentColor"
+                      strokeWidth="1.5"
+                      strokeLinecap="round"
+                    />
+                  </svg>
+                </div>
+
+                <span
                   className="text-3xl sm:text-4xl font-light text-[#D4AF37] tracking-tight"
                   style={{ fontFamily: "'Bebas Neue', sans-serif" }}
                 >
-                  Top 100
+                  100%
                 </span>
-                <span className="text-[10px] font-medium tracking-[0.22em] uppercase text-[#A8988B] mt-0.5">
-                  Myntra Hackerramp
+
+                <span className="text-[10px] font-medium tracking-[0.22em] uppercase text-[#A8988B] mt-1 leading-relaxed">
+                  QUALITY
+                  <br />
+                  FOCUSED
                 </span>
               </div>
             </motion.div>
