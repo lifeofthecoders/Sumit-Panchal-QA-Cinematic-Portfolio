@@ -277,7 +277,7 @@ export const HeroSection: React.FC = () => {
             <div 
               className="text-[2.2rem] text-[#D8AB64] font-normal leading-none -ml-0.5"
               style={{ 
-                fontFamily: "'Herr Von Muellerhoff', 'Allura', cursive",
+                fontFamily: "'Great Vibes', 'Allura', cursive",
                 letterSpacing: '0.04em',
               }}
             >

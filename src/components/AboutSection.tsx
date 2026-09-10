@@ -446,9 +446,9 @@ export const AboutSection: React.FC = () => {
                 <div className="absolute bottom-4 right-4 z-20 select-none">
                   <span 
                     className="text-3xl text-[#F2D8A7] drop-shadow-[0_0_12px_rgba(242,216,167,0.5)] transition-colors duration-300 group-hover:text-white"
-                    style={{ fontFamily: "'Herr Von Muellerhoff', cursive" }}
+                    style={{ fontFamily: "'Great Vibes', cursive" }}
                   >
-                    Lohitha
+                    Sumit Panchal
                   </span>
                 </div>
               </div>
