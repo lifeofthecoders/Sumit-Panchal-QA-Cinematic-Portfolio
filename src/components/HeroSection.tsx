@@ -263,7 +263,7 @@ export const HeroSection: React.FC = () => {
 
               {/* Download Resume Button */}
               <motion.a
-                href="/Sumit_Panchal_QA_Resume.pdf"
+                href={`${import.meta.env.BASE_URL}Sumit_Panchal_QA_Resume.pdf`}
                 download="Sumit_Panchal_QA_Resume.pdf"
                 onMouseEnter={() => setIsHovered(true)}
                 onMouseLeave={() => setIsHovered(false)}
