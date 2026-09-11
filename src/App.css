@@ -182,3 +182,30 @@
     border-right-color: var(--border);
   }
 }
+
+.project-watermark {
+  position: absolute;
+  right: 0.75rem;
+  bottom: 0.75rem;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 0.06em;
+  min-width: 8rem;
+  min-height: 8rem;
+  color: rgba(234, 216, 199, 0.32);
+  text-shadow: 0 0 16px rgba(212, 175, 55, 0.18);
+  opacity: 1;
+  filter: drop-shadow(0 0 12px rgba(212, 175, 55, 0.12));
+  line-height: 0.72;
+  font-variant-numeric: tabular-nums;
+  z-index: 0;
+  font-size: clamp(5rem, 8vw, 9.5rem);
+  white-space: nowrap;
+  overflow: visible;
+}
+
+.project-watermark-digit {
+  display: inline-block;
+  line-height: 1;
+}

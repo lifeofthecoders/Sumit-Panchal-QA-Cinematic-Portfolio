@@ -189,10 +189,11 @@ export const AboutSection: React.FC = () => {
                 </div>
 
                 <span
-                  className="text-3xl sm:text-4xl font-light text-[#F4EBE2] tracking-tight"
+                  className="inline-flex items-end gap-[0.08em] text-3xl sm:text-4xl font-light text-[#F4EBE2] tracking-tight"
                   style={{ fontFamily: "'Bebas Neue', sans-serif" }}
                 >
-                  5+
+                  <span>5</span>
+                  <span>+</span>
                 </span>
 
                 <span className="text-[10px] font-medium tracking-[0.22em] uppercase text-[#A8988B] mt-1 leading-relaxed">
@@ -237,10 +238,11 @@ export const AboutSection: React.FC = () => {
                 </div>
 
                 <span
-                  className="text-3xl sm:text-4xl font-light text-[#D4AF37] tracking-tight"
+                  className="inline-flex items-end gap-[0.08em] text-3xl sm:text-4xl font-light text-[#D4AF37] tracking-tight"
                   style={{ fontFamily: "'Bebas Neue', sans-serif" }}
                 >
-                  5000+
+                  <span>5000</span>
+                  <span>+</span>
                 </span>
 
                 <span className="text-[10px] font-medium tracking-[0.22em] uppercase text-[#A8988B] mt-1 leading-relaxed">
@@ -291,10 +293,11 @@ export const AboutSection: React.FC = () => {
                 </div>
 
                 <span
-                  className="text-3xl sm:text-4xl font-light text-[#F4EBE2] tracking-tight"
+                  className="inline-flex items-end gap-[0.08em] text-3xl sm:text-4xl font-light text-[#F4EBE2] tracking-tight"
                   style={{ fontFamily: "'Bebas Neue', sans-serif" }}
                 >
-                  50+
+                  <span>50</span>
+                  <span>+</span>
                 </span>
 
                 <span className="text-[10px] font-medium tracking-[0.22em] uppercase text-[#A8988B] mt-1 leading-relaxed">
@@ -344,10 +347,11 @@ export const AboutSection: React.FC = () => {
                 </div>
 
                 <span
-                  className="text-3xl sm:text-4xl font-light text-[#D4AF37] tracking-tight"
+                  className="inline-flex items-end gap-[0.08em] text-3xl sm:text-4xl font-light text-[#D4AF37] tracking-tight"
                   style={{ fontFamily: "'Bebas Neue', sans-serif" }}
                 >
-                  100%
+                  <span>100</span>
+                  <span>%</span>
                 </span>
 
                 <span className="text-[10px] font-medium tracking-[0.22em] uppercase text-[#A8988B] mt-1 leading-relaxed">

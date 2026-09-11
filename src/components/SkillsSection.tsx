@@ -4,35 +4,67 @@ import type { Variants } from 'framer-motion';
 
 const bentoCategories = [
   {
-    title: 'FRONTEND ARCHITECTURE',
-    badge: 'CORE PILLAR',
-    items: ['React.js', 'React Native', 'Tailwind CSS', 'Electron.js'],
-    description: 'Specialized in building high-performance client applications, custom component libraries, and immersive desktop/mobile interfaces.',
-    stat: '100% RESPONSIVE',
+    title: 'FUNCTIONAL & REGRESSION TESTING',
+    badge: 'CORE QA',
+    items: [
+      'Functional Testing',
+      'Regression Testing',
+      'Smoke Testing',
+      'Sanity Testing',
+      'Exploratory Testing',
+      'UAT',
+    ],
+    description:
+      'Validate product functionality against requirements, business rules, acceptance criteria, and critical user journeys while protecting existing functionality through structured regression testing.',
+    stat: 'END-TO-END',
     colSpan: 'lg:col-span-7',
   },
   {
-    title: 'DISTRIBUTED BACKEND',
-    badge: 'HIGH CONCURRENCY',
-    items: ['Node.js', 'Express.js', 'Spring Boot', 'Docker', 'Redis'],
-    description: 'Engineered RESTful APIs, JWT role-based access control, caching layers, and multi-tenant SaaS backend isolation.',
-    stat: '< 40ms LATENCY',
+    title: 'TEST DESIGN & EXECUTION',
+    badge: 'TEST STRATEGY',
+    items: [
+      'Test Scenarios',
+      'Test Cases',
+      'Test Data',
+      'Edge Cases',
+      'User Journeys',
+      'Test Execution',
+    ],
+    description:
+      'Translate requirements into structured test scenarios, detailed test cases, checklists, test data, edge-case coverage, and risk-focused execution plans for reliable product validation.',
+    stat: 'RISK BASED',
     colSpan: 'lg:col-span-5',
   },
   {
-    title: 'DATA PLATFORMS',
-    badge: 'PERSISTENCE',
-    items: ['MongoDB Atlas', 'PostgreSQL', 'MySQL'],
-    description: 'Designing resilient relational and document schemas with optimized indexing and transaction isolation.',
-    stat: 'ACID & NOSQL',
+    title: 'DEFECT & QUALITY MANAGEMENT',
+    badge: 'QUALITY CONTROL',
+    items: [
+      'JIRA',
+      'Bug Reporting',
+      'Severity & Priority',
+      'Defect Lifecycle',
+      'Retesting',
+      'Root Cause Analysis',
+    ],
+    description:
+      'Identify, document, communicate, retest, and track defects with clear reproduction steps, expected versus actual results, evidence, impact, severity, and priority throughout the defect lifecycle.',
+    stat: 'EVIDENCE DRIVEN',
     colSpan: 'lg:col-span-5',
   },
   {
-    title: 'ALGORITHMS & MACHINE LEARNING',
-    badge: 'INTELLIGENCE',
-    items: ['C++', 'Python', 'Java', 'scikit-learn', 'OpenAI API'],
-    description: '1200+ algorithm problems solved. Applied Random Forest classifiers for real-time risk heatmaps and NLP policy analyzers.',
-    stat: '1200+ SOLVED',
+    title: 'RELEASE & QUALITY ASSURANCE',
+    badge: 'RELEASE CONFIDENCE',
+    items: [
+      'Web Application QA',
+      'Mobile Application QA',
+      'Release Validation',
+      'Risk Assessment',
+      'Test Coverage',
+      'Release Readiness',
+    ],
+    description:
+      'Evaluate test coverage, regression status, critical defects, known risks, and business-critical workflows across web and mobile applications to provide clear quality visibility and release confidence.',
+    stat: 'RELEASE READY',
     colSpan: 'lg:col-span-7',
   },
 ];
@@ -87,8 +119,9 @@ export const SkillsSection: React.FC = () => {
             className="text-[11px] font-medium tracking-[0.35em] uppercase text-[#D4AF37]"
             style={{ fontFamily: "'Montserrat', sans-serif" }}
           >
-            03 / TECH MATRIX
+            03 / QA EXPERTISE
           </span>
+
           <div className="w-20 h-[1px] bg-gradient-to-r from-[#D4AF37]/80 via-[#8C6D4F]/40 to-transparent" />
         </motion.div>
 
@@ -105,10 +138,11 @@ export const SkillsSection: React.FC = () => {
             style={{ fontFamily: "'Bebas Neue', sans-serif" }}
           >
             <span className="block text-transparent bg-clip-text bg-gradient-to-b from-[#FFFFFF] via-[#D5CBC0] to-[#605448] drop-shadow-[0_4px_12px_rgba(0,0,0,0.8)]">
-              ARCHITECTURAL MASTERY.
+              QUALITY EXPERTISE.
             </span>
+
             <span className="block text-transparent bg-clip-text bg-gradient-to-b from-[#F7E7C4] via-[#C99E5D] to-[#543B1A] drop-shadow-[0_8px_25px_rgba(201,158,93,0.35)]">
-              PRECISION APPLIED.
+              PRECISION TESTED.
             </span>
           </h2>
         </motion.div>
@@ -127,7 +161,10 @@ export const SkillsSection: React.FC = () => {
               variants={cardVariants}
               onMouseEnter={() => setHoveredIdx(idx)}
               onMouseLeave={() => setHoveredIdx(null)}
-              whileHover={{ y: -5, transition: { duration: 0.25 } }}
+              whileHover={{
+                y: -5,
+                transition: { duration: 0.25 },
+              }}
               className={`${block.colSpan} relative p-8 sm:p-9 rounded-sm border border-[#8C6D4F]/35 bg-[#100D0B]/85 backdrop-blur-xl overflow-hidden transition-all duration-500 hover:border-[#D4AF37]/80 hover:shadow-[0_16px_45px_rgba(212,175,55,0.14)] cursor-pointer group`}
             >
               {/* Top Subtle Border Highlight */}
@@ -135,6 +172,7 @@ export const SkillsSection: React.FC = () => {
 
               {/* Corner Minimal Pins */}
               <div className="absolute top-0 left-0 w-3 h-3 border-t border-l border-[#D4AF37]/40 group-hover:border-[#D4AF37] transition-colors duration-300" />
+
               <div className="absolute bottom-0 right-0 w-3 h-3 border-b border-r border-[#D4AF37]/40 group-hover:border-[#D4AF37] transition-colors duration-300" />
 
               {/* Card Meta Header */}
@@ -142,6 +180,7 @@ export const SkillsSection: React.FC = () => {
                 <span className="text-[10px] font-mono tracking-[0.25em] uppercase text-[#D4AF37] group-hover:text-[#F3DBB3] transition-colors">
                   {block.badge}
                 </span>
+
                 <span className="text-[10px] font-mono px-2.5 py-0.5 border border-[#8C6D4F]/40 text-[#C4B5A5] bg-[#17130F] group-hover:border-[#D4AF37]/50 group-hover:text-white transition-all">
                   {block.stat}
                 </span>
@@ -178,7 +217,6 @@ export const SkillsSection: React.FC = () => {
             </motion.div>
           ))}
         </motion.div>
-
       </div>
     </section>
   );

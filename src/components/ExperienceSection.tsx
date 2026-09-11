@@ -13,38 +13,43 @@ interface RouteStop {
 const journey: RouteStop[] = [
   {
     id: '01',
-    year: 'MAY - JUN 2026',
-    title: 'FULL STACK & MOBILE INTERN',
-    organization: 'TECHNICAL HUB PVT LTD',
-    description: 'Engineered cross-platform mobile and responsive web applications utilizing React Native and modern full-stack workflows.',
+    year: 'JUN 2021 - CURRENT',
+    title: 'QUALITY ASSURANCE ANALYST',
+    organization: 'ECHO INNOVATE IT',
+    description:
+      'Leading manual QA for mobile applications through comprehensive functional, regression, usability, and end-to-end testing. Design and execute test plans, test cases, and test scripts while collaborating with developers, designers, and product managers to identify risks and deliver stable releases.',
   },
   {
     id: '02',
-    year: '2026 MILESTONE',
-    title: 'TOP 100 NATIONAL TEAM',
-    organization: 'MYNTRA WEFORSHE HACKERRAMP',
-    description: 'Ranked among the Top 100 nationwide teams while maintaining Department Topper status (9.07 CGPA) in Data Science.',
+    year: 'QA IMPACT',
+    title: 'QUALITY & RELEASE IMPACT',
+    organization: 'ECHO INNOVATE IT',
+    description:
+      'Achieved 40% reduction in post-production defects through an improved regression strategy, maintained 99% release stability across multiple deployments, prevented 50+ critical and high-severity production issues, and supported client UAT and production release sign-off.',
   },
   {
     id: '03',
-    year: 'MAY - JUN 2025',
-    title: 'FULL STACK TRAINEE',
-    organization: 'TECHNICAL HUB PVT LTD',
-    description: 'Trained in modern full-stack architecture, developing and deploying end-to-end interactive responsive web platforms.',
+    year: 'JAN - MAY 2021',
+    title: 'QUALITY ASSURANCE TRAINEE',
+    organization: 'MAKEIN TECHNOLOGIES',
+    description:
+      'Built hands-on experience in manual and automation testing using Selenium IDE, Selenium WebDriver, and TestNG. Prepared test cases and bug reports while performing functional, integration, system, regression, black-box, and usability testing for live applications.',
   },
   {
     id: '04',
-    year: '2023 - 2027',
-    title: 'B.TECH IN DATA SCIENCE',
-    organization: 'ADITYA COLLEGE OF ENGINEERING',
-    description: 'Specializing in Machine Learning and System Design. Solved 1200+ algorithm challenges across LeetCode, CodeChef, and GeeksforGeeks.',
+    year: 'MULTI-DOMAIN QA',
+    title: 'QA PROJECT DOMAINS',
+    organization: 'MOBILE • WEB • REAL-WORLD PRODUCTS',
+    description:
+      'Tested diverse digital products across taxi booking, professional networking, photo-book e-commerce, multiplayer gaming, and community sustainability platforms, adapting QA coverage to different user journeys, business rules, and product risks.',
   },
   {
     id: '05',
-    year: '2021 - 2023',
-    title: 'HIGHER SECONDARY (MPC)',
-    organization: 'SRI CHAITANYA JUNIOR COLLEGE',
-    description: 'Completed specialized coursework in Mathematics, Physics, and Chemistry with 90.60% aggregate excellence.',
+    year: 'CONTINUOUS GROWTH',
+    title: 'QUALITY-DRIVEN ENGINEERING',
+    organization: 'QA • ANALYSIS • COLLABORATION',
+    description:
+      'Developed a detail-oriented and analytical approach to quality assurance with a focus on identifying risks before production, maintaining strong test coverage, communicating defects clearly, and collaborating effectively with developers, product managers, and cross-functional teams.',
   },
 ];
 
@@ -83,6 +88,7 @@ export const ExperienceSection: React.FC = () => {
           >
             04 / EXPERIENCE
           </span>
+
           <div className="w-20 h-[1px] bg-gradient-to-r from-[#D4AF37]/80 via-[#8C6D4F]/40 to-transparent" />
         </motion.div>
 
@@ -101,6 +107,7 @@ export const ExperienceSection: React.FC = () => {
             <span className="block text-transparent bg-clip-text bg-gradient-to-b from-[#FFFFFF] via-[#D5CBC0] to-[#605448] drop-shadow-[0_4px_12px_rgba(0,0,0,0.8)]">
               EXPERIENCE &amp;
             </span>
+
             <span className="block text-transparent bg-clip-text bg-gradient-to-b from-[#F7E7C4] via-[#C99E5D] to-[#543B1A] drop-shadow-[0_8px_25px_rgba(201,158,93,0.35)]">
               MILESTONES.
             </span>
@@ -139,11 +146,13 @@ export const ExperienceSection: React.FC = () => {
                 {/* Route Node */}
                 <div className="absolute left-[19px] md:left-[140px] top-1.5 -translate-x-1/2 flex items-center justify-center">
                   <div className="absolute w-6 h-6 rounded-full border border-[#D4AF37]/0 group-hover:border-[#D4AF37]/40 group-hover:scale-150 transition-all duration-700 ease-out" />
+
                   <div className="w-2.5 h-2.5 rounded-full bg-[#120F0C] border border-[#8C6D4F] group-hover:bg-[#D4AF37] group-hover:border-[#D4AF37] group-hover:shadow-[0_0_12px_#D4AF37] transition-colors duration-300" />
                 </div>
 
                 {/* Content (Right side of track) */}
                 <div className="ml-14 md:ml-12 pl-2">
+                  
                   {/* Mobile Year */}
                   <div className="md:hidden mb-1.5">
                     <span className="text-[10px] font-mono tracking-[0.2em] text-[#D4AF37]">

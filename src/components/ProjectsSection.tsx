@@ -11,196 +11,93 @@ interface Project {
   metrics: { label: string; value: string }[];
 }
 
-// const projects: Project[] = [
-//   {
-//     number: '01',
-//     title: 'PolicyGuard AI',
-//     category: 'AI / LEGAL-TECH PLATFORM',
-//     description:
-//       'AI-powered platform engineered for automated privacy policy analysis and legal contract auditing across web, desktop, and mobile. Implements NLP extraction, real-time risk alert detection, and generative risk score intelligence.',
-//     githubUrl: 'https://github.com/lohithadamisetti123',
-//     tech: [
-//       'React.js',
-//       'React Native',
-//       'Electron.js',
-//       'Node.js',
-//       'Express.js',
-//       'MongoDB Atlas',
-//       'OpenAI API',
-//       'Prompt Eng',
-//       'NLP',
-//       'Docker',
-//       'JWT',
-//     ],
-//     metrics: [
-//       { label: 'PLATFORMS', value: 'Web, Mobile, Desktop' },
-//       { label: 'ENGINE', value: 'OpenAI NLP / GPT' },
-//       { label: 'PIPELINE', value: 'Automated Scoring' },
-//     ],
-//   },
-//   {
-//     number: '02',
-//     title: 'Software Release Risk Heatmap',
-//     category: 'MACHINE LEARNING / DEV PLATFORM',
-//     description:
-//       'Full-stack predictive release management platform utilizing Machine Learning. Implements a trained Random Forest classifier to categorize release stability from Low to Critical risk, rendered over a live interactive team heatmap.',
-//     githubUrl: 'https://github.com/lohithadamisetti123',
-//     tech: [
-//       'React.js',
-//       'TypeScript',
-//       'Python',
-//       'FastAPI',
-//       'scikit-learn',
-//       'PostgreSQL',
-//       'Tailwind CSS',
-//       'REST APIs',
-//       'JWT',
-//     ],
-//     metrics: [
-//       { label: 'MODEL', value: 'Random Forest' },
-//       { label: 'ACCURACY', value: 'High Precision' },
-//       { label: 'DASHBOARD', value: 'Live Risk Heatmap' },
-//     ],
-//   },
-//   {
-//     number: '03',
-//     title: 'Multi-Tenant SaaS Platform',
-//     category: 'CLOUD / DISTRIBUTED SYSTEM',
-//     description:
-//       'Enterprise-grade multi-tenant platform built for unified management of teams, projects, and execution lifecycles. Architected with strict tenant data isolation, granular Role-Based Access Control (RBAC), and containerized deployments.',
-//     githubUrl: 'https://github.com/lohithadamisetti123',
-//     tech: [
-//       'Node.js',
-//       'Express.js',
-//       'PostgreSQL',
-//       'React',
-//       'Docker',
-//       'JWT',
-//       'RBAC',
-//       'REST APIs',
-//     ],
-//     metrics: [
-//       { label: 'ARCHITECTURE', value: 'Multi-Tenant' },
-//       { label: 'SECURITY', value: 'RBAC Isolation' },
-//       { label: 'CONTAINERS', value: 'Docker Compose' },
-//     ],
-//   },
-//   {
-//     number: '04',
-//     title: 'Payment Gateway with Hosted Checkout',
-//     category: 'FINTECH / PAYMENT SYSTEMS',
-//     description:
-//       'End-to-end hosted payment gateway infrastructure supporting seamless merchant order generation, multi-currency processing, and secure consumer checkout via UPI and Cards with webhook transaction verification.',
-//     githubUrl: 'https://github.com/lohithadamisetti123',
-//     tech: [
-//       'Node.js',
-//       'Spring Boot',
-//       'PostgreSQL',
-//       'React',
-//       'Docker',
-//       'REST APIs',
-//       'UPI / Card Integrations',
-//     ],
-//     metrics: [
-//       { label: 'PROTOCOLS', value: 'UPI & Cards' },
-//       { label: 'BACKEND', value: 'Spring Boot + Node' },
-//       { label: 'DATABASE', value: 'ACID PostgreSQL' },
-//     ],
-//   },
-// ];
-
 const projects: Project[] = [
   {
     number: '01',
-    title: 'WEB APPLICATION QA',
-    category: 'MANUAL / FUNCTIONAL TESTING',
+    title: 'WEB APPLICATION TESTING',
+    category: 'FUNCTIONAL / REGRESSION TESTING',
     description:
-      'Performed end-to-end manual testing of web applications covering functional, regression, integration, smoke, exploratory, and user acceptance testing. Designed test scenarios and test cases, executed test cycles, identified defects, and validated fixes across releases.',
-    //githubUrl: 'https://github.com/lifeofthecoders/Sumit-Panchal-QA-Portfolio',
+      'Performed end-to-end manual testing of web applications by validating requirements, user journeys, functional behavior, regression impact, edge cases, and release readiness. Designed test scenarios and detailed test cases, executed test cycles, reported defects with clear evidence, and verified fixes across releases.',
     tech: [
       'Manual Testing',
       'Functional Testing',
       'Regression Testing',
-      'Integration Testing',
+      'Exploratory Testing',
       'UAT',
       'JIRA',
       'Test Case Design',
-      'Bug Reporting',
+      'Defect Reporting',
     ],
     metrics: [
-      { label: 'TESTING', value: 'End-to-End' },
-      { label: 'DEFECTS', value: 'Tracked & Verified' },
-      { label: 'COVERAGE', value: 'Functional + Regression' },
+      { label: 'APPROACH', value: 'End-to-End QA' },
+      { label: 'VALIDATION', value: 'Functional + Regression' },
+      { label: 'OUTPUT', value: 'Defect Evidence' },
     ],
   },
-
   {
     number: '02',
-    title: 'MOBILE APPLICATION QA',
-    category: 'MOBILE / FUNCTIONAL TESTING',
+    title: 'MOBILE APPLICATION TESTING',
+    category: 'MOBILE / COMPATIBILITY TESTING',
     description:
-      'Validated mobile application functionality across user flows, compatibility scenarios, edge cases, and regression cycles. Focused on usability, reliability, defect reproduction, and release confidence for mobile experiences.',
-    //githubUrl: 'https://github.com/lifeofthecoders/Sumit-Panchal-QA-Portfolio',
+      'Validated mobile application workflows across functional scenarios, usability expectations, compatibility conditions, edge cases, and regression cycles. Focused on critical user journeys, defect reproduction, retesting, and release confidence for reliable mobile experiences.',
     tech: [
       'Mobile Testing',
       'Functional Testing',
       'Regression Testing',
       'Usability Testing',
       'Compatibility Testing',
-      'Bug Reporting',
+      'Exploratory Testing',
       'JIRA',
+      'Bug Reporting',
     ],
     metrics: [
       { label: 'PLATFORM', value: 'Mobile Applications' },
-      { label: 'FOCUS', value: 'Functional Quality' },
-      { label: 'VALIDATION', value: 'Regression Cycles' },
+      { label: 'FOCUS', value: 'User Journey Quality' },
+      { label: 'VALIDATION', value: 'Regression + Compatibility' },
     ],
   },
-
   {
     number: '03',
-    title: 'REGRESSION & UAT TESTING',
-    category: 'REGRESSION / USER ACCEPTANCE TESTING',
+    title: 'E-COMMERCE / CUSTOMER JOURNEY QA',
+    category: 'END-TO-END / USER EXPERIENCE TESTING',
     description:
-      'Executed comprehensive regression and user acceptance testing to ensure existing functionality remained stable after product changes and releases. Validated critical user journeys, identified regression issues, verified fixes, and supported release readiness through structured test execution.',
-    //githubUrl: 'https://github.com/lifeofthecoders/Sumit-Panchal-QA-Portfolio',
+      'Validated business-critical customer journeys from authentication and product discovery through cart, checkout, order processing, and confirmation. Covered positive and negative scenarios, boundary conditions, usability expectations, regression impact, and defect verification to protect the overall customer experience.',
     tech: [
-      'Regression Testing',
-      'UAT',
+      'End-to-End Testing',
       'Functional Testing',
-      'Smoke Testing',
-      'Test Execution',
+      'Negative Testing',
+      'Boundary Testing',
+      'Regression Testing',
+      'Usability Testing',
       'JIRA',
       'Defect Tracking',
-      'Release Validation',
     ],
     metrics: [
-      { label: 'FOCUS', value: 'Regression Stability' },
-      { label: 'VALIDATION', value: 'User Acceptance' },
-      { label: 'GOAL', value: 'Release Readiness' },
+      { label: 'JOURNEY', value: 'Critical User Flows' },
+      { label: 'FOCUS', value: 'Customer Experience' },
+      { label: 'GOAL', value: 'Release Confidence' },
     ],
   },
   {
     number: '04',
-    title: 'QA TEST MANAGEMENT',
-    category: 'TEST DESIGN / DEFECT MANAGEMENT',
+    title: 'RELEASE & DEFECT MANAGEMENT',
+    category: 'RELEASE VALIDATION / DEFECT LIFECYCLE',
     description:
-      'Created and maintained structured test scenarios, detailed test cases, defect reports, regression checklists, and execution evidence. Followed the defect lifecycle from identification and documentation through retesting and closure.',
-    //githubUrl: 'https://github.com/lifeofthecoders/Sumit-Panchal-QA-Portfolio',
+      'Managed structured test execution and defect lifecycle activities from identification and documentation through retesting, regression confirmation, and release readiness assessment. Communicated severity, priority, evidence, open risks, and verification status to support informed quality decisions.',
     tech: [
-      'Test Scenarios',
-      'Test Cases',
-      'Checklists',
-      'Bug Reports',
-      'JIRA',
+      'Test Execution',
+      'Defect Lifecycle',
+      'Severity & Priority',
+      'Retesting',
       'Regression Testing',
-      'Exploratory Testing',
-      'UAT',
+      'Release Validation',
+      'JIRA',
+      'QA Documentation',
     ],
     metrics: [
       { label: 'PROCESS', value: 'Defect Lifecycle' },
-      { label: 'OUTPUT', value: 'QA Documentation' },
-      { label: 'APPROACH', value: 'Quality First' },
+      { label: 'CONTROL', value: 'Risk + Regression' },
+      { label: 'OUTCOME', value: 'Release Readiness' },
     ],
   },
 ];
@@ -216,7 +113,6 @@ export const ProjectsSection: React.FC = () => {
       <div className="absolute bottom-1/4 right-1/4 w-[30rem] h-[30rem] bg-[#8C6D4F]/5 rounded-full blur-[170px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto w-full relative z-10">
-
         {/* Eyebrow Header */}
         <motion.div
           initial={{ opacity: 0, x: -20 }}
@@ -229,7 +125,7 @@ export const ProjectsSection: React.FC = () => {
             className="text-[11px] font-medium tracking-[0.35em] uppercase text-[#D4AF37]"
             style={{ fontFamily: "'Montserrat', sans-serif" }}
           >
-            02 / FEATURED WORK
+            02 / QA PROJECTS
           </span>
           <div className="w-20 h-[1px] bg-gradient-to-r from-[#D4AF37]/80 via-[#8C6D4F]/40 to-transparent" />
         </motion.div>
@@ -247,7 +143,7 @@ export const ProjectsSection: React.FC = () => {
             style={{ fontFamily: "'Bebas Neue', sans-serif" }}
           >
             <span className="block text-transparent bg-clip-text bg-gradient-to-b from-[#FFFFFF] via-[#D5CBC0] to-[#605448] drop-shadow-[0_4px_12px_rgba(0,0,0,0.8)]">
-              FEATURED WORKS.
+              QA PROJECTS.
             </span>
             <span className="block text-transparent bg-clip-text bg-gradient-to-b from-[#F7E7C4] via-[#C99E5D] to-[#543B1A] drop-shadow-[0_8px_25px_rgba(201,158,93,0.35)]">
               QUALITY DELIVERED.
@@ -263,9 +159,8 @@ export const ProjectsSection: React.FC = () => {
         </motion.div>
 
         {/* React Bits Stacking Deck */}
-        {/* React Bits Stacking Deck */}
         <ScrollStack
-          itemDistance={20}
+          itemDistance={36}
           itemScale={0.035}
           itemStackDistance={28}
           stackPosition="15%"
@@ -276,7 +171,6 @@ export const ProjectsSection: React.FC = () => {
           {projects.map((project) => (
             <ScrollStackItem key={project.title}>
               <div className="relative w-full rounded-2xl border border-[#8C6D4F]/50 bg-[#0E0C0A] p-8 sm:p-12 shadow-[0_25px_70px_rgba(0,0,0,0.98)] group overflow-hidden transition-colors duration-500 hover:border-[#D4AF37]">
-
                 {/* Top Gold Border Light Flare */}
                 <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-[#D4AF37]/80 to-transparent" />
 
@@ -288,15 +182,19 @@ export const ProjectsSection: React.FC = () => {
 
                 {/* Big Background Watermark Number */}
                 <span
-                  className="absolute -bottom-6 -right-3 text-8xl sm:text-9xl font-bold text-[#EAD8C7]/5 select-none pointer-events-none leading-none"
+                  className="project-watermark absolute right-4 bottom-3 sm:right-6 sm:bottom-4 font-bold select-none pointer-events-none"
                   style={{ fontFamily: "'Bebas Neue', sans-serif" }}
+                  aria-label={project.number}
                 >
-                  {project.number}
+                  {project.number.split('').map((digit, index) => (
+                    <span key={`${project.number}-${index}`} className="project-watermark-digit">
+                      {digit}
+                    </span>
+                  ))}
                 </span>
 
                 {/* Content Grid */}
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start relative z-10">
-
                   {/* Left Column (7 Cols) */}
                   <div className="lg:col-span-7 flex flex-col justify-between">
                     <div>
@@ -358,15 +256,12 @@ export const ProjectsSection: React.FC = () => {
                         </div>
                       ))}
                     </div>
-                    
                   </div>
-
                 </div>
               </div>
             </ScrollStackItem>
           ))}
         </ScrollStack>
-
       </div>
     </section>
   );
