@@ -209,3 +209,52 @@
   display: inline-block;
   line-height: 1;
 }
+
+.project-card-title {
+  max-width: 100%;
+}
+
+.skills-header-title,
+.skills-card-title,
+.skills-card-description,
+.skills-bento-card {
+  transition: all 0.3s ease;
+}
+
+@media (max-width: 767px) {
+  .project-card-title {
+    max-width: calc(100% - 6.5rem);
+    line-height: 0.92;
+  }
+
+  .project-watermark {
+    right: 0.45rem;
+    bottom: 0.45rem;
+    min-width: 5.5rem;
+    min-height: 5.5rem;
+    font-size: clamp(3.5rem, 18vw, 5.5rem);
+    z-index: 2;
+  }
+
+  .skills-header-title {
+    font-size: clamp(2.4rem, 11vw, 4.2rem);
+    line-height: 0.96;
+  }
+
+  .skills-bento-card {
+    padding: 1.15rem 1rem 1rem;
+    gap: 0.35rem;
+  }
+
+  .skills-card-title {
+    font-size: clamp(1.8rem, 6.5vw, 3rem);
+    line-height: 0.96;
+    margin-bottom: 0.75rem;
+  }
+
+  .skills-card-description {
+    font-size: 0.74rem;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+  }
+}
