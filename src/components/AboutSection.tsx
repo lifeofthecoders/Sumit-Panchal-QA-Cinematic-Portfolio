@@ -134,7 +134,7 @@ export const AboutSection: React.FC = () => {
               className="text-xs sm:text-sm md:text-[14.5px] font-light text-[#B3A497] leading-[1.85] tracking-wide mb-10 max-w-xl"
               style={{ fontFamily: "'Montserrat', sans-serif" }}
             >
-              I'm <span className="text-[#F3DBB3] font-medium">Sumit Panchal</span>, a <span className="text-[#F3DBB3] font-medium">Manual Quality Analyst (QA)</span> with 5+ years of experience in software testing, quality assurance, and delivering reliable, user-friendly digital products. I specialize in functional, regression, integration, and user acceptance testing, with a strong focus on detail, process improvement, and customer satisfaction. I turn requirements into high-quality products.
+              I'm <span className="text-[#F3DBB3] font-medium">Sumit Panchal</span>, a <span className="text-[#F3DBB3] font-medium">Manual Quality Analyst (QA)</span> with 5+ years of experience in manual testing, quality assurance, and delivering reliable, user-friendly digital products. I specialize in functional, regression, integration, and user acceptance testing, with a strong focus on detail, process improvement, and customer satisfaction. I turn requirements into high-quality products.
             </motion.p>
 
             {/* Concise 4-Item QA Achievement Metrics Grid */}
