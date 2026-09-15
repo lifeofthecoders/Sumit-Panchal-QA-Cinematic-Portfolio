@@ -39,6 +39,7 @@ const navItems = [
 export const HeroSection: React.FC = () => {
   const [cursorPos, setCursorPos] = useState({ x: -100, y: -100 });
   const [isHovered, setIsHovered] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
@@ -50,8 +51,19 @@ export const HeroSection: React.FC = () => {
     return () => window.removeEventListener('mousemove', handleMouseMove);
   }, []);
 
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 768) {
+        setIsMenuOpen(false);
+      }
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   return (
-    <section className="relative w-screen h-screen overflow-hidden bg-black text-[#E8DFD8] font-sans selection:bg-[#cbb59d] selection:text-black cursor-none">
+    <section className="hero-section relative w-full min-h-screen overflow-hidden bg-black text-[#E8DFD8] font-sans selection:bg-[#cbb59d] selection:text-black cursor-none">
 
       {/* ================= 1. MINIMAL CUSTOM CURSOR ================= */}
       {cursorPos.x >= 0 && (
@@ -76,13 +88,13 @@ export const HeroSection: React.FC = () => {
       )}
 
       {/* ================= 2. FIXED VIDEO LAYER ================= */}
-      <div className="fixed inset-0 z-0 overflow-hidden pointer-events-none bg-black flex items-center justify-end">
+      <div className="hero-media fixed inset-0 z-0 overflow-hidden pointer-events-none bg-black flex items-center justify-end">
         <video
           autoPlay
           muted
           loop
           playsInline
-          className="h-full w-full object-cover md:h-screen md:w-auto md:max-w-none md:object-contain md:origin-right md:scale-95 lg:scale-100"
+          className="hero-video h-full w-full object-cover md:h-screen md:w-auto md:max-w-none md:object-contain md:origin-right md:scale-95 lg:scale-100"
         >
           <source src={`${import.meta.env.BASE_URL}videos/hero.mp4`} type="video/mp4" />
         </video>
@@ -118,23 +130,23 @@ export const HeroSection: React.FC = () => {
       </div>
 
       {/* ================= 4. CONTENT LAYER ================= */}
-      <div className="relative z-10 flex flex-col justify-between h-full w-full px-6 sm:px-12 lg:px-16 pt-6 pb-8 pointer-events-none">
+      <div className="hero-content-shell relative z-10 flex flex-col justify-between h-full w-full px-6 sm:px-12 lg:px-16 pt-4 pb-8 pointer-events-none">
 
         {/* Navigation Bar */}
-        <header className="relative flex items-center justify-between w-full pointer-events-auto">
+        <header className="hero-header relative flex items-center w-full gap-3 sm:gap-6 pointer-events-auto z-30">
           <a
             href="#"
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
-            className="text-xs sm:text-sm font-semibold tracking-[0.35em] uppercase text-[#EAD8C7] hover:opacity-75 transition-opacity"
+            className="hero-brand shrink-0 text-[10px] sm:text-sm font-semibold tracking-[0.35em] uppercase text-[#EAD8C7] hover:opacity-75 transition-opacity"
             style={{ fontFamily: "'Montserrat', sans-serif" }}
           >
-            SUMIT PANCHAL.
+            SUMIT PANCHAL
           </a>
 
           {/* Navigation Links */}
           <nav
-            className="hidden md:flex items-center space-x-8 lg:space-x-10 text-[11px] tracking-[0.28em] font-light uppercase text-[#C4B5A5] absolute left-1/2 -translate-x-1/2"
+            className="hero-nav hidden md:flex items-center justify-center gap-6 lg:gap-8 xl:gap-10 text-[11px] tracking-[0.28em] font-light uppercase text-[#C4B5A5]"
             style={{ fontFamily: "'Montserrat', sans-serif" }}
           >
             {navItems.map((item) => (
@@ -157,7 +169,7 @@ export const HeroSection: React.FC = () => {
             href="#contact"
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
-            className="group flex items-center space-x-2 text-[11px] tracking-[0.24em] font-light uppercase py-2 px-4 border border-[#8C6D4F]/50 hover:border-[#D4AF37] text-[#EAD8C7] transition-all duration-300 backdrop-blur-sm ml-auto md:ml-0"
+            className="hero-contact hidden md:flex items-center space-x-2 text-[11px] tracking-[0.24em] font-light uppercase py-2 px-4 border border-[#8C6D4F]/50 hover:border-[#D4AF37] text-[#EAD8C7] transition-all duration-300 backdrop-blur-sm ml-auto md:ml-0"
             style={{ fontFamily: "'Montserrat', sans-serif" }}
           >
             <span>LET&apos;S TALK</span>
@@ -166,10 +178,51 @@ export const HeroSection: React.FC = () => {
               ↗
             </span>
           </a>
+
+          <button
+            type="button"
+            aria-label="Toggle navigation menu"
+            aria-expanded={isMenuOpen}
+            onClick={() => setIsMenuOpen((prev) => !prev)}
+            className="md:hidden ml-auto flex h-10 w-10 items-center justify-center rounded border border-[#8C6D4F]/50 bg-[#120F0C]/70 text-[#EAD8C7] transition hover:border-[#D4AF37]"
+          >
+            <span className="flex flex-col gap-1.5">
+              <span className="block h-px w-5 bg-current" />
+              <span className="block h-px w-5 bg-current" />
+              <span className="block h-px w-5 bg-current" />
+            </span>
+          </button>
+
+          {isMenuOpen && (
+            <nav
+              className="hero-mobile-menu md:hidden fixed left-4 right-4 z-40 rounded border border-[#8C6D4F]/40 bg-[#120F0C]/95 backdrop-blur-sm shadow-[0_18px_40px_rgba(0,0,0,0.45)]"
+              style={{ fontFamily: "'Montserrat', sans-serif" }}
+            >
+              <div className="flex flex-col py-2 text-[10px] tracking-[0.24em] uppercase text-[#C4B5A5]">
+                {navItems.map((item) => (
+                  <a
+                    key={item.name}
+                    href={item.href}
+                    onClick={() => setIsMenuOpen(false)}
+                    className="px-4 py-3 border-b border-[#8C6D4F]/20 last:border-b-0 transition hover:bg-[#1B1713] hover:text-[#FFF5EB]"
+                  >
+                    {item.name}
+                  </a>
+                ))}
+                <a
+                  href="#contact"
+                  onClick={() => setIsMenuOpen(false)}
+                  className="px-4 py-3 text-[#EAD8C7] transition hover:bg-[#1B1713] hover:text-[#FFF5EB]"
+                >
+                  LET&apos;S TALK
+                </a>
+              </div>
+            </nav>
+          )}
         </header>
 
         {/* Main Hero Row */}
-        <div className="relative flex flex-col md:flex-row items-center justify-between w-full pt-4 pb-2 my-auto">
+        <div className="hero-main-row relative flex flex-col md:flex-row items-center justify-between w-full pt-7 pb-2 my-auto sm:pt-8 md:pt-4">
 
           {/* LEFT: Balanced Headline & Actions */}
           <motion.div
@@ -240,7 +293,7 @@ export const HeroSection: React.FC = () => {
             {/* CTA Buttons */}
             <motion.div
               variants={fadeUpVariants}
-              className="flex flex-row items-center gap-4 sm:gap-6"
+              className="hero-actions flex flex-row items-center gap-4 sm:gap-6"
               style={{ fontFamily: "'Montserrat', sans-serif" }}
             >
 
@@ -322,11 +375,15 @@ export const HeroSection: React.FC = () => {
 
             {/* Your Job Role */}
             <div
-              className="text-[9.5px] font-medium tracking-[0.24em] uppercase text-[#E0D3C5] space-y-1 mb-3"
+              className="text-[9.5px] font-medium tracking-[0.24em] uppercase text-[#E0D3C5] space-y-1"
               style={{ fontFamily: "'Montserrat', sans-serif" }}
             >
               <p>QUALITY ANALYST.</p>
             </div>
+
+            <span className="self-end text-xl text-[#C99E5D] leading-none font-serif mt-2">
+              ”
+            </span>
 
           </motion.div>
         </div>
