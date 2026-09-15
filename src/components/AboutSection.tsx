@@ -447,13 +447,15 @@ export const AboutSection: React.FC = () => {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent pointer-events-none" />
 
                 {/* Monoline Signature */}
-                <div className="absolute bottom-4 right-4 z-20 select-none">
-                  <span 
+                <div className="absolute bottom-4 right-4 z-20 flex flex-col items-end select-none">
+                  <span
                     className="text-3xl text-[#F2D8A7] drop-shadow-[0_0_12px_rgba(242,216,167,0.5)] transition-colors duration-300 group-hover:text-white"
                     style={{ fontFamily: "'Great Vibes', cursive" }}
                   >
                     Sumit Panchal
                   </span>
+
+                  <div className="w-full h-[1px] bg-gradient-to-r from-[#D4AF37] via-[#E8D7C5]/70 to-transparent shadow-[0_0_8px_rgba(212,175,55,0.4)]" />
                 </div>
               </div>
             </motion.div>

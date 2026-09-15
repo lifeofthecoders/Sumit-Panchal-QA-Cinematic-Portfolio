@@ -59,6 +59,7 @@ export const HeroSection: React.FC = () => {
     };
 
     window.addEventListener('resize', handleResize);
+
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
@@ -96,7 +97,10 @@ export const HeroSection: React.FC = () => {
           playsInline
           className="hero-video h-full w-full object-cover md:h-screen md:w-auto md:max-w-none md:object-contain md:origin-right md:scale-95 lg:scale-100"
         >
-          <source src={`${import.meta.env.BASE_URL}videos/hero.mp4`} type="video/mp4" />
+          <source
+            src={`${import.meta.env.BASE_URL}videos/hero.mp4`}
+            type="video/mp4"
+          />
         </video>
 
         {/* Seamless Soft Left Edge Blend */}
@@ -132,8 +136,10 @@ export const HeroSection: React.FC = () => {
       {/* ================= 4. CONTENT LAYER ================= */}
       <div className="hero-content-shell relative z-10 flex flex-col justify-between h-full w-full px-6 sm:px-12 lg:px-16 pt-4 pb-8 pointer-events-none">
 
-        {/* Navigation Bar */}
+        {/* ================= NAVIGATION BAR ================= */}
         <header className="hero-header relative flex items-center w-full gap-3 sm:gap-6 pointer-events-auto z-30">
+
+          {/* Brand */}
           <a
             href="#"
             onMouseEnter={() => setIsHovered(true)}
@@ -144,7 +150,7 @@ export const HeroSection: React.FC = () => {
             SUMIT PANCHAL
           </a>
 
-          {/* Navigation Links */}
+          {/* Desktop Navigation Links */}
           <nav
             className="hero-nav hidden md:flex items-center justify-center gap-6 lg:gap-8 xl:gap-10 text-[11px] tracking-[0.28em] font-light uppercase text-[#C4B5A5]"
             style={{ fontFamily: "'Montserrat', sans-serif" }}
@@ -179,6 +185,7 @@ export const HeroSection: React.FC = () => {
             </span>
           </a>
 
+          {/* Mobile Menu Button */}
           <button
             type="button"
             aria-label="Toggle navigation menu"
@@ -193,10 +200,14 @@ export const HeroSection: React.FC = () => {
             </span>
           </button>
 
+          {/* Mobile Menu */}
           {isMenuOpen && (
             <nav
               className="hero-mobile-menu md:hidden fixed left-4 right-4 z-40 rounded border border-[#8C6D4F]/40 bg-[#120F0C]/95 backdrop-blur-sm shadow-[0_18px_40px_rgba(0,0,0,0.45)]"
-              style={{ fontFamily: "'Montserrat', sans-serif" }}
+              style={{
+                fontFamily: "'Montserrat', sans-serif",
+                top: '64px',
+              }}
             >
               <div className="flex flex-col py-2 text-[10px] tracking-[0.24em] uppercase text-[#C4B5A5]">
                 {navItems.map((item) => (
@@ -209,6 +220,7 @@ export const HeroSection: React.FC = () => {
                     {item.name}
                   </a>
                 ))}
+
                 <a
                   href="#contact"
                   onClick={() => setIsMenuOpen(false)}
@@ -221,10 +233,10 @@ export const HeroSection: React.FC = () => {
           )}
         </header>
 
-        {/* Main Hero Row */}
+        {/* ================= MAIN HERO ROW ================= */}
         <div className="hero-main-row relative flex flex-col md:flex-row items-center justify-between w-full pt-7 pb-2 my-auto sm:pt-8 md:pt-4">
 
-          {/* LEFT: Balanced Headline & Actions */}
+          {/* ================= LEFT: HEADLINE & ACTIONS ================= */}
           <motion.div
             variants={containerVariants}
             initial="hidden"
@@ -256,7 +268,6 @@ export const HeroSection: React.FC = () => {
                 <span className="block text-transparent bg-clip-text bg-gradient-to-b from-[#DFBE8A] via-[#9B7640] to-[#342410] drop-shadow-[0_10px_30px_rgba(155,118,64,0.4)]">
                   EXPERIENCES
                 </span>
-
               </h1>
             </motion.div>
 
@@ -333,7 +344,7 @@ export const HeroSection: React.FC = () => {
             </motion.div>
           </motion.div>
 
-          {/* RIGHT: Floating Quote & Signature Card */}
+          {/* ================= RIGHT: QUOTE & SIGNATURE ================= */}
           <motion.div
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
@@ -345,46 +356,69 @@ export const HeroSection: React.FC = () => {
             className="hidden lg:flex flex-col items-start pointer-events-auto pr-24 xl:pr-36 mr-4 z-20 select-none"
           >
 
-            {/* Quote Mark */}
-            <span className="text-xl text-[#C99E5D] leading-none font-serif mb-2">
-              “
-            </span>
-
-            {/* Compact Two-Line Statement */}
+            {/* Quote + Signature */}
             <div
-              className="text-[9.5px] font-medium tracking-[0.24em] uppercase text-[#E0D3C5] space-y-1 mb-3"
-              style={{ fontFamily: "'Montserrat', sans-serif" }}
-            >
-              <p>QUALITY IS MY CRAFT.</p>
-              <p>RELIABILITY IS MY GOAL.</p>
-            </div>
-
-            {/* Gold Accent Line */}
-            <div className="w-28 h-[1px] bg-gradient-to-r from-[#D4AF37] via-[#E8D7C5]/70 to-transparent shadow-[0_0_8px_rgba(212,175,55,0.4)] mb-2" />
-
-            {/* Fine Monoline Calligraphy Signature */}
-            <div
-              className="text-[2.2rem] text-[#D8AB64] font-normal leading-none -ml-0.5"
+              className="flex flex-col items-start select-none"
               style={{
-                fontFamily: "'Great Vibes', 'Allura', cursive",
-                letterSpacing: '0.04em',
+                fontFamily: "'Montserrat', sans-serif",
               }}
             >
-              Sumit Panchal
+
+              {/* Two-Line Quote */}
+              <div
+                className="text-[9.5px] font-medium tracking-[0.24em] uppercase text-[#E0D3C5]"
+                style={{
+                  lineHeight: 1.7,
+                }}
+              >
+                {/* First line */}
+                <div className="flex items-baseline whitespace-nowrap">
+                  <span
+                    className="text-[18px] text-[#C99E5D] font-serif leading-none mr-0"
+                  >
+                    “
+                  </span>
+
+                  <span>QUALITY IS MY CRAFT.</span>
+                </div>
+
+                {/* Second line */}
+                <div className="flex items-baseline whitespace-nowrap">
+                  <span>RELIABILITY IS MY GOAL.</span>
+
+                  <span
+                    className="text-[18px] text-[#C99E5D] font-serif leading-none ml-0"
+                  >
+                    ”
+                  </span>
+                </div>
+              </div>
+
+              {/* Gold Accent Line */}
+              <div className="w-fit mt-3">
+                <div className="w-full h-[1px] bg-gradient-to-r from-[#D4AF37] via-[#E8D7C5]/70 to-transparent shadow-[0_0_8px_rgba(212,175,55,0.4)] mb-2" />
+
+                {/* Fine Monoline Calligraphy Signature */}
+                <div
+                  className="text-[2.2rem] text-[#D8AB64] font-normal leading-none whitespace-nowrap"
+                  style={{
+                    fontFamily: "'Great Vibes', 'Allura', cursive",
+                    letterSpacing: '0.04em',
+                  }}
+                >
+                  Sumit Panchal
+                </div>
+              </div>
+
+              {/* Your Job Role */}
+              <div
+                className="mt-2 text-[9.5px] font-medium tracking-[0.24em] uppercase text-[#E0D3C5]"
+                style={{ fontFamily: "'Montserrat', sans-serif" }}
+              >
+                <p>QUALITY ANALYST.</p>
+              </div>
+
             </div>
-
-            {/* Your Job Role */}
-            <div
-              className="text-[9.5px] font-medium tracking-[0.24em] uppercase text-[#E0D3C5] space-y-1"
-              style={{ fontFamily: "'Montserrat', sans-serif" }}
-            >
-              <p>QUALITY ANALYST.</p>
-            </div>
-
-            <span className="self-end text-xl text-[#C99E5D] leading-none font-serif mt-2">
-              ”
-            </span>
-
           </motion.div>
         </div>
 
