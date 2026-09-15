@@ -221,10 +221,219 @@
   transition: all 0.3s ease;
 }
 
+.hero-media {
+  isolation: isolate;
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  overflow: hidden;
+  background: #000;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.hero-video {
+  display: block;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  object-fit: cover;
+  object-position: center center;
+  background: #000;
+  transform: none;
+}
+
+.hero-video:fullscreen,
+.hero-video:-webkit-full-screen {
+  width: 100vw !important;
+  height: 100vh !important;
+  max-width: none !important;
+  max-height: none !important;
+  object-fit: contain;
+  object-position: center;
+  transform: none;
+  background: #000;
+}
+
+.hero-content-shell {
+  padding-top: 1.25rem;
+}
+
+.hero-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: clamp(0.75rem, 2vw, 2rem);
+  min-height: 56px;
+}
+
+.hero-brand {
+  margin-right: clamp(0.5rem, 1.8vw, 2rem);
+}
+
+.hero-nav {
+  margin-left: auto;
+  white-space: nowrap;
+}
+
+.hero-contact {
+  margin-left: 0;
+}
+
+@media (min-width: 768px) {
+  .hero-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .hero-nav {
+    justify-content: center;
+    white-space: nowrap;
+  }
+
+  .hero-video {
+    width: auto;
+    height: 100vh;
+    min-width: 100%;
+    object-fit: contain;
+    object-position: right center;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .hero-header {
+    flex-wrap: wrap;
+    row-gap: 1.25rem;
+  }
+
+  .hero-nav {
+    order: 3;
+    width: 100%;
+    justify-content: center;
+    gap: 1.25rem;
+    margin-inline: 0;
+  }
+
+  .hero-nav > a {
+    margin-right: 0 !important;
+  }
+}
+
 @media (max-width: 767px) {
+  .hero-section {
+    min-height: 100svh;
+  }
+
+  .hero-content-shell {
+    padding-top: 0.9rem;
+  }
+
+  .hero-header {
+    min-height: 52px;
+    align-items: center;
+  }
+
+  .hero-main-row {
+    /* Slightly more breathing room below the navbar (issue: hero sat too
+       close to the header). Kept independent of the hamburger menu, which
+       is now a fixed overlay and never affects this spacing. */
+    padding-top: 2.1rem;
+  }
+
+  .hero-brand {
+    letter-spacing: 0.18em;
+    white-space: nowrap;
+    margin-right: 0;
+  }
+
+  .hero-media {
+    justify-content: center;
+  }
+
+  .hero-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .hero-header {
+    gap: 0.75rem;
+  }
+
+  /* Mobile nav overlay is fixed to the viewport (not the header box), so
+     opening/closing it can never change the header's height or push the
+     "I BUILD QUALITY EXPERIENCES" hero content up or down. */
+  .hero-mobile-menu {
+    top: 4.75rem;
+    max-height: calc(100svh - 5.5rem);
+    overflow-y: auto;
+  }
+
+  .projects-section,
+  #skills,
+  #experience,
+  #contact {
+    padding-top: 4rem;
+  }
+
+  .hero-contact {
+    padding-inline: 0.7rem;
+    letter-spacing: 0.14em;
+    white-space: nowrap;
+  }
+
+  .hero-actions {
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+
+  .hero-actions a {
+    flex: 1 1 10rem;
+    justify-content: center;
+    padding-inline: 1rem;
+    text-align: center;
+  }
+
+  .projects-section {
+    padding-top: 4.5rem;
+    padding-bottom: 6rem;
+  }
+
+  .project-card {
+    padding: 1.5rem 1.1rem;
+    border-radius: 0.75rem;
+  }
+
+  .project-card .grid {
+    gap: 1.25rem;
+  }
+
+  .project-meta {
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 0.45rem 0.7rem;
+    line-height: 1.35;
+  }
+
   .project-card-title {
-    max-width: calc(100% - 6.5rem);
+    max-width: calc(100% - 4.5rem);
+    overflow-wrap: anywhere;
     line-height: 0.92;
+  }
+
+  .project-metric {
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 0.4rem 0.75rem;
+  }
+
+  .project-metric span:last-child {
+    max-width: 100%;
+    text-align: right;
+    overflow-wrap: anywhere;
   }
 
   .project-watermark {

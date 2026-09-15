@@ -9,6 +9,7 @@
   width: 100%;
   padding-top: 4vh;
   padding-bottom: 50vh; /* creates the runway so all cards stack and lock at the top */
+  overflow: visible;
 }
 
 .scroll-stack-card {
@@ -21,6 +22,20 @@
   transform-style: preserve-3d;
   -webkit-transform: translateZ(0);
   transform: translateZ(0);
+  overflow: hidden;
+}
+
+@media (max-width: 767px) {
+  .scroll-stack-inner {
+    padding-top: 2vh;
+    padding-bottom: 35vh;
+  }
+
+  .scroll-stack-card {
+    height: clamp(620px, 72vh, 760px) !important;
+    min-height: clamp(620px, 72vh, 760px) !important;
+    margin-bottom: 24px !important;
+  }
 }
 
 .scroll-stack-end {
