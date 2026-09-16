@@ -278,22 +278,34 @@ const ScrollStack: React.FC<ScrollStackProps> = ({
       if (typeof window === 'undefined' || window.innerWidth < 768) return;
       if (!cards.length) return;
 
-      // Reset to natural content size before measuring card 1
+      // Reset so each card can expand to its full natural content
       cards.forEach((card) => {
         card.style.minHeight = '';
         card.style.height = 'auto';
+        card.style.overflow = 'visible';
         const inner = card.querySelector('.project-card') as HTMLElement | null;
         if (inner) {
           inner.style.minHeight = '';
           inner.style.height = 'auto';
+          inner.style.overflow = 'visible';
         }
       });
 
       void (cards[0] && cards[0].offsetHeight);
 
-      // Use 1st card height as the shared height for cards 2, 3, 4
-      const firstInner = cards[0].querySelector('.project-card') as HTMLElement | null;
-      const targetH = firstInner ? firstInner.offsetHeight : cards[0].offsetHeight;
+      // Tallest content height (includes all feature-pill rows on card 3)
+      let targetH = 0;
+      cards.forEach((card) => {
+        const inner = card.querySelector('.project-card') as HTMLElement | null;
+        if (inner) {
+          targetH = Math.max(targetH, inner.scrollHeight, inner.getBoundingClientRect().height);
+        } else {
+          targetH = Math.max(targetH, card.scrollHeight);
+        }
+      });
+
+      // Buffer so last pill row + corner brackets never sit under the border
+      targetH = Math.ceil(targetH + 24);
       if (!targetH) return;
 
       cards.forEach((card) => {
@@ -302,10 +314,10 @@ const ScrollStack: React.FC<ScrollStackProps> = ({
         card.style.overflow = 'hidden';
         const inner = card.querySelector('.project-card') as HTMLElement | null;
         if (inner) {
-          // Fill the equal frame; content stays top-aligned (no flex stretch)
-          inner.style.height = '100%';
-          inner.style.minHeight = '100%';
+          inner.style.height = `${targetH}px`;
+          inner.style.minHeight = `${targetH}px`;
           inner.style.boxSizing = 'border-box';
+          inner.style.overflow = 'hidden';
         }
       });
     };

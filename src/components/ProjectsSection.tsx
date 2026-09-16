@@ -206,7 +206,7 @@ export const ProjectsSection: React.FC = () => {
                 {/* Content Grid */}
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start relative z-10">
                   {/* Left Column (7 Cols) */}
-                  <div className="lg:col-span-7 flex flex-col justify-between">
+                  <div className="lg:col-span-7 flex flex-col justify-between gap-6">
                     <div>
                       <div className="project-meta flex items-center space-x-3 mb-4">
                         <span className="text-xs font-mono font-bold text-[#D4AF37]">
