@@ -180,7 +180,7 @@ export const ProjectsSection: React.FC = () => {
         >
           {projects.map((project) => (
             <ScrollStackItem key={project.title}>
-              <div className="project-card relative w-full h-full rounded-2xl border border-[#8C6D4F]/50 bg-[#0E0C0A] p-6 sm:p-8 md:p-12 shadow-[0_25px_70px_rgba(0,0,0,0.98)] group overflow-hidden transition-colors duration-500 hover:border-[#D4AF37]">
+              <div className="project-card relative w-full rounded-2xl border border-[#8C6D4F]/50 bg-[#0E0C0A] p-8 sm:p-12 shadow-[0_25px_70px_rgba(0,0,0,0.98)] group overflow-hidden transition-colors duration-500 hover:border-[#D4AF37]">
                 {/* Top Gold Border Light Flare */}
                 <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-[#D4AF37]/80 to-transparent" />
 
@@ -206,7 +206,7 @@ export const ProjectsSection: React.FC = () => {
                 {/* Content Grid */}
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start relative z-10">
                   {/* Left Column (7 Cols) */}
-                  <div className="lg:col-span-7 flex flex-col justify-between gap-6">
+                  <div className="lg:col-span-7 flex flex-col justify-between">
                     <div>
                       <div className="project-meta flex items-center space-x-3 mb-4">
                         <span className="text-xs font-mono font-bold text-[#D4AF37]">

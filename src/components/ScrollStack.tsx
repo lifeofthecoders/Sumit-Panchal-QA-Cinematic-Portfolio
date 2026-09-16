@@ -87,13 +87,12 @@ const ScrollStack: React.FC<ScrollStackProps> = ({
     isUpdatingRef.current = true;
 
     const mobile = typeof window !== 'undefined' && window.innerWidth < 768;
+    // Mobile: keep current working values. Desktop: reference stack behaviour.
     const effectiveItemScale = mobile ? Math.min(itemScale, 0.02) : itemScale;
     const effectiveStackDistance = mobile ? Math.min(itemStackDistance, 16) : itemStackDistance;
-    // Center card in viewport: top of card sits so card body is mid-screen
-    // (~12–16% from top works for typical ~65–75% card height on phones)
     const effectiveStackPosition = mobile ? '12%' : stackPosition;
     const effectiveScaleEndPosition = mobile ? '6%' : scaleEndPosition;
-    const effectiveBaseScale = mobile ? 0.94 : Math.min(baseScale, 0.85);
+    const effectiveBaseScale = mobile ? 0.94 : baseScale;
 
     const { scrollTop, containerHeight } = getScrollData();
     const stackPositionPx = parsePercentage(effectiveStackPosition, containerHeight);
@@ -114,7 +113,7 @@ const ScrollStack: React.FC<ScrollStackProps> = ({
       const triggerStart = cardTop - stackPositionPx - effectiveStackDistance * i;
       const triggerEnd = cardTop - scaleEndPositionPx;
       const pinStart = cardTop - stackPositionPx - effectiveStackDistance * i;
-      // Release cards earlier on mobile so they do not remain pinned over QA Expertise
+      // Mobile: release earlier so stack does not cover QA Expertise
       const pinEnd = mobile
         ? endElementTop - containerHeight * 0.65
         : endElementTop - containerHeight / 2;
@@ -237,7 +236,6 @@ const ScrollStack: React.FC<ScrollStackProps> = ({
 
     const measureTops = () => {
       initialTopsRef.current = cards.map((card) => {
-        // Reset transform briefly so measurement is natural layout position
         const prev = card.style.transform;
         card.style.transform = 'none';
         const rect = card.getBoundingClientRect();
@@ -257,16 +255,19 @@ const ScrollStack: React.FC<ScrollStackProps> = ({
       if (i < cards.length - 1) {
         card.style.marginBottom = `${effectiveItemDistance}px`;
       }
+
+      // Desktop (reference): natural content height — no forced equalize (avoids clipping features)
+      // Mobile (current): keep working uniform min-height so stack stays clean
       if (mobile) {
-        // Uniform min-height so rear cards cannot peek below a shorter front card
         card.style.height = 'auto';
         card.style.minHeight = '720px';
         card.style.overflow = 'hidden';
       } else {
-        // Desktop: equalize after measure (see equalizeDesktopHeights)
-        card.style.height = 'auto';
+        card.style.height = '';
+        card.style.minHeight = '';
         card.style.overflow = 'hidden';
       }
+
       card.style.willChange = 'transform, filter';
       card.style.transformOrigin = 'top center';
       card.style.backfaceVisibility = 'hidden';
@@ -274,59 +275,7 @@ const ScrollStack: React.FC<ScrollStackProps> = ({
       card.style.perspective = '1000px';
     });
 
-    const equalizeDesktopHeights = () => {
-      if (typeof window === 'undefined' || window.innerWidth < 768) return;
-      if (!cards.length) return;
-
-      // Reset so each card can expand to its full natural content
-      cards.forEach((card) => {
-        card.style.minHeight = '';
-        card.style.height = 'auto';
-        card.style.overflow = 'visible';
-        const inner = card.querySelector('.project-card') as HTMLElement | null;
-        if (inner) {
-          inner.style.minHeight = '';
-          inner.style.height = 'auto';
-          inner.style.overflow = 'visible';
-        }
-      });
-
-      void (cards[0] && cards[0].offsetHeight);
-
-      // Tallest content height (includes all feature-pill rows on card 3)
-      let targetH = 0;
-      cards.forEach((card) => {
-        const inner = card.querySelector('.project-card') as HTMLElement | null;
-        if (inner) {
-          targetH = Math.max(targetH, inner.scrollHeight, inner.getBoundingClientRect().height);
-        } else {
-          targetH = Math.max(targetH, card.scrollHeight);
-        }
-      });
-
-      // Buffer so last pill row + corner brackets never sit under the border
-      targetH = Math.ceil(targetH + 24);
-      if (!targetH) return;
-
-      cards.forEach((card) => {
-        card.style.height = `${targetH}px`;
-        card.style.minHeight = `${targetH}px`;
-        card.style.overflow = 'hidden';
-        const inner = card.querySelector('.project-card') as HTMLElement | null;
-        if (inner) {
-          inner.style.height = `${targetH}px`;
-          inner.style.minHeight = `${targetH}px`;
-          inner.style.boxSizing = 'border-box';
-          inner.style.overflow = 'hidden';
-        }
-      });
-    };
-
-    equalizeDesktopHeights();
-
-    // Re-measure after layout settles (fonts/images) and on resize — critical for live vs local
     const remeasure = () => {
-      equalizeDesktopHeights();
       measureTops();
       updateCardTransforms();
     };
@@ -335,7 +284,6 @@ const ScrollStack: React.FC<ScrollStackProps> = ({
     };
     window.addEventListener('resize', resizeHandler);
     window.addEventListener('load', remeasure);
-    // Delayed remeasure for slow font/image loads on production
     const t1 = window.setTimeout(remeasure, 150);
     const t2 = window.setTimeout(remeasure, 600);
 
