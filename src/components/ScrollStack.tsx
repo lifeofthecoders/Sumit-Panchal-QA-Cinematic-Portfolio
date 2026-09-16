@@ -276,18 +276,39 @@ const ScrollStack: React.FC<ScrollStackProps> = ({
 
     const equalizeDesktopHeights = () => {
       if (typeof window === 'undefined' || window.innerWidth < 768) return;
-      // Reset so we measure natural content height
+
+      // Reset so we measure natural content height of each card
       cards.forEach((card) => {
-        card.style.minHeight = '0';
+        card.style.minHeight = '';
         card.style.height = 'auto';
+        const inner = card.querySelector('.project-card') as HTMLElement | null;
+        if (inner) {
+          inner.style.minHeight = '';
+          inner.style.height = 'auto';
+        }
       });
-      // Force layout
+
+      // Force layout read
       void (cards[0] && cards[0].offsetHeight);
-      const maxH = cards.reduce((m, card) => Math.max(m, card.offsetHeight), 0);
+
+      // Tallest natural height among all project cards
+      const maxH = cards.reduce((m, card) => {
+        const inner = card.querySelector('.project-card') as HTMLElement | null;
+        const h = inner ? inner.offsetHeight : card.offsetHeight;
+        return Math.max(m, h);
+      }, 0);
+
       if (maxH > 0) {
         cards.forEach((card) => {
+          // Explicit height so percentage children fill the box
+          card.style.height = `${maxH}px`;
           card.style.minHeight = `${maxH}px`;
           card.style.overflow = 'hidden';
+          const inner = card.querySelector('.project-card') as HTMLElement | null;
+          if (inner) {
+            inner.style.height = '100%';
+            inner.style.minHeight = '100%';
+          }
         });
       }
     };
