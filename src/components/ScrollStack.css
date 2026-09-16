@@ -26,7 +26,7 @@
   overflow: hidden;
 }
 
-/* Desktop only: force inner bordered card to fill equal stack-card height */
+/* Desktop only */
 @media (min-width: 768px) {
   .scroll-stack-card {
     overflow: hidden;
@@ -46,7 +46,6 @@
   }
 
   .scroll-stack-card {
-    /* Uniform height so a shorter front card never reveals the bottom of a taller rear card */
     height: auto !important;
     min-height: 720px !important;
     margin-bottom: 18px !important;
