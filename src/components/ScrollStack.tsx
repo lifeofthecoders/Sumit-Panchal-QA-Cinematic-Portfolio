@@ -93,7 +93,7 @@ const ScrollStack: React.FC<ScrollStackProps> = ({
     // (~12–16% from top works for typical ~65–75% card height on phones)
     const effectiveStackPosition = mobile ? '12%' : stackPosition;
     const effectiveScaleEndPosition = mobile ? '6%' : scaleEndPosition;
-    const effectiveBaseScale = mobile ? 0.94 : baseScale;
+    const effectiveBaseScale = mobile ? 0.94 : Math.min(baseScale, 0.85);
 
     const { scrollTop, containerHeight } = getScrollData();
     const stackPositionPx = parsePercentage(effectiveStackPosition, containerHeight);
@@ -263,9 +263,9 @@ const ScrollStack: React.FC<ScrollStackProps> = ({
         card.style.minHeight = '720px';
         card.style.overflow = 'hidden';
       } else {
-        card.style.height = '';
-        card.style.minHeight = '';
-        card.style.overflow = '';
+        // Desktop: equalize after measure (see equalizeDesktopHeights)
+        card.style.height = 'auto';
+        card.style.overflow = 'hidden';
       }
       card.style.willChange = 'transform, filter';
       card.style.transformOrigin = 'top center';
@@ -274,8 +274,29 @@ const ScrollStack: React.FC<ScrollStackProps> = ({
       card.style.perspective = '1000px';
     });
 
+    const equalizeDesktopHeights = () => {
+      if (typeof window === 'undefined' || window.innerWidth < 768) return;
+      // Reset so we measure natural content height
+      cards.forEach((card) => {
+        card.style.minHeight = '0';
+        card.style.height = 'auto';
+      });
+      // Force layout
+      void (cards[0] && cards[0].offsetHeight);
+      const maxH = cards.reduce((m, card) => Math.max(m, card.offsetHeight), 0);
+      if (maxH > 0) {
+        cards.forEach((card) => {
+          card.style.minHeight = `${maxH}px`;
+          card.style.overflow = 'hidden';
+        });
+      }
+    };
+
+    equalizeDesktopHeights();
+
     // Re-measure after layout settles (fonts/images) and on resize — critical for live vs local
     const remeasure = () => {
+      equalizeDesktopHeights();
       measureTops();
       updateCardTransforms();
     };
