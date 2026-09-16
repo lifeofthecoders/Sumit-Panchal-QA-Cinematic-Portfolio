@@ -345,8 +345,8 @@
 .hero-quote-gold-line {
   width: 100%;
   height: 1px;
-  margin-top: 10px;
-  margin-bottom: 10px;
+  margin-top: 4px;
+  margin-bottom: 4px;
   background: linear-gradient(to right, #D4AF37, rgb(232 215 197 / 70%), transparent);
   box-shadow: 0 0 8px rgba(212, 175, 55, 0.4);
   flex-shrink: 0;
@@ -538,8 +538,8 @@
   }
 
   .hero-quote-gold-line {
-    margin-top: 9px;
-    margin-bottom: 9px;
+    margin-top: 3px;
+    margin-bottom: 3px;
   }
 
   .hero-signature {
@@ -547,7 +547,7 @@
   }
 
   .hero-role {
-    margin-top: 6px;
+    margin-top: 4px;
     font-size: 8.5px;
     letter-spacing: 0.18em;
   }
