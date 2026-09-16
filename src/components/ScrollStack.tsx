@@ -87,11 +87,13 @@ const ScrollStack: React.FC<ScrollStackProps> = ({
     isUpdatingRef.current = true;
 
     const mobile = typeof window !== 'undefined' && window.innerWidth < 768;
-    const effectiveItemScale = mobile ? Math.min(itemScale, 0.02) : itemScale;
-    const effectiveStackDistance = mobile ? Math.min(itemStackDistance, 18) : itemStackDistance;
-    const effectiveStackPosition = mobile ? '22%' : stackPosition;
-    const effectiveScaleEndPosition = mobile ? '10%' : scaleEndPosition;
-    const effectiveBaseScale = mobile ? 0.94 : baseScale;
+    const effectiveItemScale = mobile ? Math.min(itemScale, 0.015) : itemScale;
+    const effectiveStackDistance = mobile ? Math.min(itemStackDistance, 12) : itemStackDistance;
+    // Center card in viewport: top of card sits so card body is mid-screen
+    // (~12–16% from top works for typical ~65–75% card height on phones)
+    const effectiveStackPosition = mobile ? '12%' : stackPosition;
+    const effectiveScaleEndPosition = mobile ? '6%' : scaleEndPosition;
+    const effectiveBaseScale = mobile ? 0.96 : baseScale;
 
     const { scrollTop, containerHeight } = getScrollData();
     const stackPositionPx = parsePercentage(effectiveStackPosition, containerHeight);
@@ -112,7 +114,10 @@ const ScrollStack: React.FC<ScrollStackProps> = ({
       const triggerStart = cardTop - stackPositionPx - effectiveStackDistance * i;
       const triggerEnd = cardTop - scaleEndPositionPx;
       const pinStart = cardTop - stackPositionPx - effectiveStackDistance * i;
-      const pinEnd = endElementTop - containerHeight / 2;
+      // Release cards earlier on mobile so they do not remain pinned over QA Expertise
+      const pinEnd = mobile
+        ? endElementTop - containerHeight * 0.65
+        : endElementTop - containerHeight / 2;
 
       const scaleProgress = calculateProgress(scrollTop, triggerStart, triggerEnd);
       const targetScale = effectiveBaseScale + i * effectiveItemScale;
@@ -230,14 +235,22 @@ const ScrollStack: React.FC<ScrollStackProps> = ({
 
     cardsRef.current = cards;
 
-    // Record static natural top positions before any transforms are applied
-    initialTopsRef.current = cards.map((card) => {
-      const rect = card.getBoundingClientRect();
-      return rect.top + window.scrollY;
-    });
+    const measureTops = () => {
+      initialTopsRef.current = cards.map((card) => {
+        // Reset transform briefly so measurement is natural layout position
+        const prev = card.style.transform;
+        card.style.transform = 'none';
+        const rect = card.getBoundingClientRect();
+        const top = rect.top + window.scrollY;
+        card.style.transform = prev;
+        return top;
+      });
+    };
+
+    measureTops();
 
     const mobile = typeof window !== 'undefined' && window.innerWidth < 768;
-    const effectiveItemDistance = mobile ? Math.min(itemDistance, 24) : itemDistance;
+    const effectiveItemDistance = mobile ? Math.min(itemDistance, 20) : itemDistance;
 
     cards.forEach((card, i) => {
       card.style.zIndex = `${i + 1}`;
@@ -245,8 +258,9 @@ const ScrollStack: React.FC<ScrollStackProps> = ({
         card.style.marginBottom = `${effectiveItemDistance}px`;
       }
       if (mobile) {
-        card.style.height = 'clamp(620px, 72vh, 760px)';
-        card.style.minHeight = 'clamp(620px, 72vh, 760px)';
+        // Let content define height so borders/content are never cut off
+        card.style.height = 'auto';
+        card.style.minHeight = '0';
       } else {
         card.style.height = '';
         card.style.minHeight = '';
@@ -258,10 +272,28 @@ const ScrollStack: React.FC<ScrollStackProps> = ({
       card.style.perspective = '1000px';
     });
 
+    // Re-measure after layout settles (fonts/images) and on resize — critical for live vs local
+    const remeasure = () => {
+      measureTops();
+      updateCardTransforms();
+    };
+    const resizeHandler = () => {
+      requestAnimationFrame(remeasure);
+    };
+    window.addEventListener('resize', resizeHandler);
+    window.addEventListener('load', remeasure);
+    // Delayed remeasure for slow font/image loads on production
+    const t1 = window.setTimeout(remeasure, 150);
+    const t2 = window.setTimeout(remeasure, 600);
+
     setupLenis();
     updateCardTransforms();
 
     return () => {
+      window.removeEventListener('resize', resizeHandler);
+      window.removeEventListener('load', remeasure);
+      window.clearTimeout(t1);
+      window.clearTimeout(t2);
       if (animationFrameRef.current) {
         cancelAnimationFrame(animationFrameRef.current);
       }

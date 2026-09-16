@@ -1,3 +1,4 @@
+
 .scroll-stack-scroller {
   position: relative;
   width: 100%;
@@ -8,7 +9,7 @@
   position: relative;
   width: 100%;
   padding-top: 4vh;
-  padding-bottom: 50vh; /* creates the runway so all cards stack and lock at the top */
+  padding-bottom: 50vh;
   overflow: visible;
 }
 
@@ -22,19 +23,22 @@
   transform-style: preserve-3d;
   -webkit-transform: translateZ(0);
   transform: translateZ(0);
-  overflow: hidden;
+  /* visible so scaled borders / shadows are never clipped */
+  overflow: visible;
 }
 
 @media (max-width: 767px) {
   .scroll-stack-inner {
-    padding-top: 2vh;
-    padding-bottom: 35vh;
+    padding-top: 4vh;
+    /* Runway so stack finishes; keep gap reasonable before QA Expertise */
+    padding-bottom: 40vh;
   }
 
   .scroll-stack-card {
-    height: clamp(620px, 72vh, 760px) !important;
-    min-height: clamp(620px, 72vh, 760px) !important;
-    margin-bottom: 24px !important;
+    /* min-height only — never force a fixed height that cuts content/borders */
+    height: auto !important;
+    min-height: 0 !important;
+    margin-bottom: 18px !important;
   }
 }
 
