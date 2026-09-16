@@ -23,7 +23,15 @@
   transform-style: preserve-3d;
   -webkit-transform: translateZ(0);
   transform: translateZ(0);
-  overflow: hidden; /* hide any rear-card content that would peek past the front card */
+  overflow: hidden;
+}
+
+/* Desktop only: uniform height so rear cards never peek under the front card */
+@media (min-width: 768px) {
+  .scroll-stack-card {
+    /* min-height set in JS to the tallest card; keep overflow clipped */
+    overflow: hidden;
+  }
 }
 
 @media (max-width: 767px) {
