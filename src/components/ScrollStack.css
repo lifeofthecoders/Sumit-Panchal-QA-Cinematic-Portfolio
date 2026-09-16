@@ -48,24 +48,24 @@
     overflow: hidden !important;
     position: relative;
     z-index: 1;
-    padding: 2rem !important;
+    padding: 1.5rem !important;
   }
 
   .scroll-stack-card .project-card .grid {
-    gap: 1.5rem;
+    gap: 1.25rem;
   }
 
   .scroll-stack-card .project-card-title {
-    margin-bottom: 0.75rem;
+    margin-bottom: 0.5rem;
   }
 
   .scroll-stack-card .project-card p {
-    margin-bottom: 1.5rem;
+    margin-bottom: 1.25rem;
     line-height: 1.6;
   }
 
   .scroll-stack-card .project-card .flex.flex-wrap {
-    padding-top: 1rem;
+    padding-top: 0.75rem;
   }
 }
 
