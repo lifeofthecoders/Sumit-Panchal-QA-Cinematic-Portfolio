@@ -79,14 +79,14 @@ export const HeroSection: React.FC = () => {
   }, []);
 
   return (
-    <section className="hero-section relative min-h-screen w-full overflow-hidden bg-black text-[#E8DFD8] font-sans selection:bg-[#cbb59d] selection:text-black cursor-none">
+    <section className="hero-section relative w-full min-h-screen overflow-hidden bg-black text-[#E8DFD8] font-sans selection:bg-[#cbb59d] selection:text-black cursor-none">
 
       {/* =========================================================
-          CUSTOM CURSOR
+          1. CUSTOM CURSOR
       ========================================================= */}
       {cursorPos.x >= 0 && (
         <motion.div
-          className="fixed left-0 top-0 z-[100] pointer-events-none rounded-full border border-[#D4AF37]/40 flex items-center justify-center backdrop-blur-[1px]"
+          className="fixed top-0 left-0 pointer-events-none z-[100] rounded-full border border-[#D4AF37]/40 flex items-center justify-center backdrop-blur-[1px]"
           animate={{
             x: cursorPos.x - (isHovered ? 24 : 5),
             y: cursorPos.y - (isHovered ? 24 : 5),
@@ -106,15 +106,15 @@ export const HeroSection: React.FC = () => {
       )}
 
       {/* =========================================================
-          FIXED VIDEO BACKGROUND
+          2. FIXED VIDEO BACKGROUND
       ========================================================= */}
-      <div className="hero-media fixed inset-0 z-0 flex items-center justify-end overflow-hidden bg-black pointer-events-none">
+      <div className="hero-media fixed inset-0 z-0 overflow-hidden pointer-events-none bg-black flex items-center justify-end">
         <video
           autoPlay
           muted
           loop
           playsInline
-          className="hero-video h-full w-full object-cover md:h-screen md:w-auto md:max-w-none md:origin-right md:scale-95 md:object-contain lg:scale-100"
+          className="hero-video h-full w-full object-cover md:h-screen md:w-auto md:max-w-none md:object-contain md:origin-right md:scale-95 lg:scale-100"
         >
           <source
             src={`${import.meta.env.BASE_URL}videos/hero.mp4`}
@@ -123,12 +123,12 @@ export const HeroSection: React.FC = () => {
         </video>
 
         {/* Left edge blend */}
-        <div className="absolute inset-y-0 left-0 w-1/2 bg-gradient-to-r from-black via-black/85 to-transparent" />
+        <div className="absolute inset-y-0 left-0 w-1/2 bg-gradient-to-r from-black via-black/85 to-transparent pointer-events-none" />
 
         {/* Watermark */}
-        <div className="absolute bottom-6 right-6 z-10 flex items-center justify-center lg:bottom-10 lg:right-12">
+        <div className="absolute bottom-6 right-6 lg:bottom-10 lg:right-12 pointer-events-none flex items-center justify-center z-10">
           <div className="relative flex items-center justify-center">
-            <div className="absolute h-36 w-36 rounded-full bg-black/85 blur-xl" />
+            <div className="absolute w-36 h-36 bg-black/85 rounded-full blur-xl" />
 
             <motion.div
               animate={{
@@ -145,7 +145,7 @@ export const HeroSection: React.FC = () => {
               <img
                 src={watermarkImg}
                 alt="Insignia"
-                className="h-28 w-28 object-contain drop-shadow-[0_0_15px_rgba(212,175,55,0.25)] lg:h-32 lg:w-32"
+                className="w-28 h-28 lg:w-32 lg:h-32 object-contain drop-shadow-[0_0_15px_rgba(212,175,55,0.25)]"
               />
             </motion.div>
           </div>
@@ -153,21 +153,21 @@ export const HeroSection: React.FC = () => {
       </div>
 
       {/* =========================================================
-          CONTENT
+          3. CONTENT LAYER
       ========================================================= */}
-      <div className="hero-content-shell relative z-10 min-h-screen w-full px-4 pt-4 pb-8 sm:px-8 lg:px-16 pointer-events-none">
+      <div className="hero-content-shell relative z-10 min-h-screen w-full px-6 sm:px-12 lg:px-16 pt-4 pb-8 pointer-events-none">
 
         {/* =======================================================
-            NAVBAR
+            4. NAVBAR
         ======================================================= */}
-        <header className="hero-header relative z-[100] flex w-full items-center gap-3 sm:gap-6 pointer-events-auto">
+        <header className="hero-header relative z-[90] flex items-center w-full gap-3 sm:gap-6 pointer-events-auto">
 
           {/* Brand */}
           <a
             href="#"
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
-            className="hero-brand shrink-0 text-[9px] font-semibold uppercase tracking-[0.32em] text-[#EAD8C7] transition-opacity hover:opacity-75 sm:text-sm sm:tracking-[0.35em]"
+            className="hero-brand shrink-0 text-[10px] sm:text-sm font-semibold tracking-[0.35em] uppercase text-[#EAD8C7] hover:opacity-75 transition-opacity"
             style={{
               fontFamily: "'Montserrat', sans-serif",
             }}
@@ -175,9 +175,9 @@ export const HeroSection: React.FC = () => {
             SUMIT PANCHAL
           </a>
 
-          {/* Desktop navigation */}
+          {/* Desktop Navigation */}
           <nav
-            className="hero-nav hidden items-center justify-center gap-6 text-[11px] font-light uppercase tracking-[0.28em] text-[#C4B5A5] md:flex lg:gap-8 xl:gap-10"
+            className="hero-nav hidden md:flex items-center justify-center gap-6 lg:gap-8 xl:gap-10 text-[11px] tracking-[0.28em] font-light uppercase text-[#C4B5A5]"
             style={{
               fontFamily: "'Montserrat', sans-serif",
             }}
@@ -188,11 +188,11 @@ export const HeroSection: React.FC = () => {
                 href={item.href}
                 onMouseEnter={() => setIsHovered(true)}
                 onMouseLeave={() => setIsHovered(false)}
-                className="group relative py-1 transition-colors duration-300 hover:text-[#FFF5EB]"
+                className="relative group py-1 transition-colors duration-300 hover:text-[#FFF5EB]"
               >
                 {item.name}
 
-                <span className="absolute bottom-0 left-0 h-px w-0 bg-[#D4AF37]/50 transition-all duration-300 group-hover:w-full" />
+                <span className="absolute bottom-0 left-0 w-0 h-[1px] bg-[#D4AF37]/50 transition-all duration-300 group-hover:w-full" />
               </a>
             ))}
           </nav>
@@ -202,7 +202,7 @@ export const HeroSection: React.FC = () => {
             href="#contact"
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
-            className="hero-contact ml-auto hidden items-center space-x-2 border border-[#8C6D4F]/50 px-4 py-2 text-[11px] font-light uppercase tracking-[0.24em] text-[#EAD8C7] backdrop-blur-sm transition-all duration-300 hover:border-[#D4AF37] md:flex"
+            className="hero-contact hidden md:flex items-center space-x-2 text-[11px] tracking-[0.24em] font-light uppercase py-2 px-4 border border-[#8C6D4F]/50 hover:border-[#D4AF37] text-[#EAD8C7] transition-all duration-300 backdrop-blur-sm ml-auto md:ml-0"
             style={{
               fontFamily: "'Montserrat', sans-serif",
             }}
@@ -211,13 +211,13 @@ export const HeroSection: React.FC = () => {
             <span className="text-xs">↗</span>
           </a>
 
-          {/* Mobile hamburger */}
+          {/* Mobile Hamburger */}
           <button
             type="button"
             aria-label="Toggle navigation menu"
             aria-expanded={isMenuOpen}
             onClick={() => setIsMenuOpen((prev) => !prev)}
-            className="ml-auto flex h-9 w-9 shrink-0 items-center justify-center rounded border border-[#8C6D4F]/50 bg-[#120F0C]/70 text-[#EAD8C7] transition hover:border-[#D4AF37] md:hidden"
+            className="md:hidden ml-auto flex h-9 w-9 shrink-0 items-center justify-center rounded border border-[#8C6D4F]/50 bg-[#120F0C]/70 text-[#EAD8C7] transition hover:border-[#D4AF37]"
           >
             <span className="flex flex-col gap-1.5">
               <span className="block h-px w-5 bg-current" />
@@ -228,97 +228,98 @@ export const HeroSection: React.FC = () => {
         </header>
 
         {/* =======================================================
-            MOBILE NAV SLOT
+            5. MOBILE NAVIGATION RESERVED AREA
 
-            THIS IS THE IMPORTANT PART.
+            IMPORTANT:
+            This area ALWAYS occupies the same height.
 
-            The slot ALWAYS exists.
+            CLOSED:
+            Empty / transparent space.
 
-            Closed:
-              empty dark/transparent space
+            OPEN:
+            Same space contains the navigation menu.
 
-            Open:
-              the menu fills the SAME space
-
-            Therefore:
-              Hero content NEVER MOVES.
+            Therefore the Hero content NEVER moves.
         ======================================================= */}
-        <div className="relative mt-3 h-[235px] w-full md:hidden sm:h-[250px]">
-
-          {/* Closed-state empty space */}
+        <div
+          className="
+            md:hidden
+            relative
+            w-full
+            h-[235px]
+            sm:h-[250px]
+            mt-2
+            pointer-events-auto
+            z-[80]
+          "
+        >
           <div
             className={`
-              absolute inset-0
+              absolute
+              left-0
+              right-0
+              top-0
+              h-full
               rounded
               border
               transition-all
               duration-300
               ${
                 isMenuOpen
-                  ? 'border-[#8C6D4F]/40 bg-[#120F0C]/95 shadow-[0_18px_40px_rgba(0,0,0,0.45)] backdrop-blur-sm'
+                  ? 'border-[#8C6D4F]/40 bg-[#120F0C]/95 backdrop-blur-sm shadow-[0_18px_40px_rgba(0,0,0,0.45)]'
                   : 'border-transparent bg-transparent'
               }
             `}
           >
-
-            {/* Open navigation */}
+            {/* Open Menu Content */}
             {isMenuOpen && (
               <nav
-                className="h-full w-full"
+                className="w-full h-full"
                 style={{
                   fontFamily: "'Montserrat', sans-serif",
                 }}
               >
-                <div className="flex h-full flex-col py-2 text-[10px] font-light uppercase tracking-[0.24em] text-[#C4B5A5]">
+                <div className="flex h-full flex-col justify-start py-2 text-[10px] tracking-[0.24em] uppercase text-[#C4B5A5]">
 
-                  <a
-                    href="#about"
-                    onClick={() => setIsMenuOpen(false)}
-                    className="flex min-h-[37px] items-center border-b border-[#8C6D4F]/20 px-4 transition hover:bg-[#1B1713] hover:text-[#FFF5EB]"
-                  >
-                    ABOUT
-                  </a>
-
-                  <a
-                    href="#work"
-                    onClick={() => setIsMenuOpen(false)}
-                    className="flex min-h-[37px] items-center border-b border-[#8C6D4F]/20 px-4 transition hover:bg-[#1B1713] hover:text-[#FFF5EB]"
-                  >
-                    PROJECTS
-                  </a>
-
-                  <a
-                    href="#skills"
-                    onClick={() => setIsMenuOpen(false)}
-                    className="flex min-h-[37px] items-center border-b border-[#8C6D4F]/20 px-4 transition hover:bg-[#1B1713] hover:text-[#FFF5EB]"
-                  >
-                    SKILLS
-                  </a>
-
-                  <a
-                    href="#experience"
-                    onClick={() => setIsMenuOpen(false)}
-                    className="flex min-h-[37px] items-center border-b border-[#8C6D4F]/20 px-4 transition hover:bg-[#1B1713] hover:text-[#FFF5EB]"
-                  >
-                    EXPERIENCE
-                  </a>
+                  {navItems.map((item) => (
+                    <a
+                      key={item.name}
+                      href={item.href}
+                      onClick={() => setIsMenuOpen(false)}
+                      className="
+                        flex
+                        items-center
+                        min-h-[38px]
+                        px-4
+                        py-2.5
+                        border-b
+                        border-[#8C6D4F]/20
+                        transition
+                        hover:bg-[#1B1713]
+                        hover:text-[#FFF5EB]
+                      "
+                    >
+                      {item.name}
+                    </a>
+                  ))}
 
                   <a
                     href="#contact"
                     onClick={() => setIsMenuOpen(false)}
-                    className="flex min-h-[37px] items-center border-b border-[#8C6D4F]/20 px-4 transition hover:bg-[#1B1713] hover:text-[#FFF5EB]"
-                  >
-                    CONTACT
-                  </a>
-
-                  <a
-                    href="#contact"
-                    onClick={() => setIsMenuOpen(false)}
-                    className="flex min-h-[37px] items-center px-4 text-[#EAD8C7] transition hover:bg-[#1B1713] hover:text-[#FFF5EB]"
+                    className="
+                      flex
+                      items-center
+                      min-h-[38px]
+                      px-4
+                      py-2.5
+                      text-[#EAD8C7]
+                      transition
+                      hover:bg-[#1B1713]
+                      hover:text-[#FFF5EB]
+                    "
                   >
                     LET&apos;S TALK
                   </a>
-
                 </div>
               </nav>
             )}
@@ -326,54 +327,62 @@ export const HeroSection: React.FC = () => {
         </div>
 
         {/* =======================================================
-            MAIN HERO CONTENT
+            6. MAIN HERO CONTENT
 
-            This starts AFTER the reserved mobile menu slot.
-            It is identical whether menu is open or closed.
+            STATIC IN BOTH STATES
         ======================================================= */}
         <div
           className="
             hero-main-row
             relative
             flex
-            w-full
             flex-col
             items-start
             justify-start
+            w-full
             pt-0
             pb-6
 
-            md:mt-[18vh]
             md:flex-row
             md:items-center
             md:justify-between
             md:gap-0
             md:pt-4
             md:pb-2
+            md:mt-[18vh]
           "
         >
 
           {/* =====================================================
-              HERO LEFT
+              LEFT HERO CONTENT
           ===================================================== */}
           <motion.div
             variants={containerVariants}
             initial="hidden"
             animate="visible"
-            className="z-20 w-full max-w-sm pointer-events-auto sm:max-w-md md:max-w-lg lg:max-w-[37rem] xl:max-w-[40rem]"
+            className="
+              w-full
+              max-w-sm
+              sm:max-w-md
+              md:max-w-lg
+              lg:max-w-[37rem]
+              xl:max-w-[40rem]
+              pointer-events-auto
+              z-20
+            "
           >
 
-            {/* Headline */}
+            {/* Main Headline */}
             <motion.div
               variants={fadeUpVariants}
-              className="relative mb-3.5 mt-[80px] select-none md:-mt-[70px]"
+              className="relative mb-3.5 select-none"
             >
               <h1
                 className="
                   text-[3.35rem]
-                  uppercase
                   leading-[0.82]
                   tracking-tight
+                  uppercase
 
                   sm:text-6xl
                   sm:leading-[0.83]
@@ -386,15 +395,15 @@ export const HeroSection: React.FC = () => {
                   fontFamily: "'Bebas Neue', sans-serif",
                 }}
               >
-                <span className="block bg-gradient-to-b from-[#FFFFFF] via-[#D5CBC0] to-[#605448] bg-clip-text text-transparent drop-shadow-[0_4px_12px_rgba(0,0,0,0.85)]">
+                <span className="block text-transparent bg-clip-text bg-gradient-to-b from-[#FFFFFF] via-[#D5CBC0] to-[#605448] drop-shadow-[0_4px_12px_rgba(0,0,0,0.85)]">
                   I BUILD
                 </span>
 
-                <span className="block bg-gradient-to-b from-[#F7E7C4] via-[#C99E5D] to-[#543B1A] bg-clip-text text-transparent drop-shadow-[0_8px_25px_rgba(201,158,93,0.35)]">
+                <span className="block text-transparent bg-clip-text bg-gradient-to-b from-[#F7E7C4] via-[#C99E5D] to-[#543B1A] drop-shadow-[0_8px_25px_rgba(201,158,93,0.35)]">
                   QUALITY
                 </span>
 
-                <span className="block bg-gradient-to-b from-[#DFBE8A] via-[#9B7640] to-[#342410] bg-clip-text text-transparent drop-shadow-[0_10px_30px_rgba(155,118,64,0.4)]">
+                <span className="block text-transparent bg-clip-text bg-gradient-to-b from-[#DFBE8A] via-[#9B7640] to-[#342410] drop-shadow-[0_10px_30px_rgba(155,118,64,0.4)]">
                   EXPERIENCES
                 </span>
               </h1>
@@ -407,27 +416,25 @@ export const HeroSection: React.FC = () => {
             >
               <p
                 className="
-                  whitespace-nowrap
                   text-[8px]
-                  font-normal
-                  uppercase
-                  tracking-[0.20em]
-                  text-[#C4B29E]
-
                   sm:text-[10px]
-                  sm:tracking-[0.28em]
-
                   md:text-[11px]
                   lg:text-xs
+                  font-normal
+                  tracking-[0.20em]
+                  sm:tracking-[0.28em]
+                  uppercase
+                  text-[#C4B29E]
+                  whitespace-nowrap
                 "
                 style={{
                   fontFamily: "'Montserrat', sans-serif",
                 }}
               >
                 MANUAL QA ANALYST
-                <span className="mx-1 text-[#8C6D4F]">•</span>
+                <span className="text-[#8C6D4F] mx-1">•</span>
                 TESTING ENTHUSIAST
-                <span className="mx-1 text-[#8C6D4F]">•</span>
+                <span className="text-[#8C6D4F] mx-1">•</span>
                 QUALITY DRIVEN
               </p>
             </motion.div>
@@ -436,20 +443,18 @@ export const HeroSection: React.FC = () => {
             <motion.div
               variants={fadeUpVariants}
               className="
-                mb-4
-                max-w-lg
                 text-[9px]
-                font-light
-                leading-[1.65]
-                tracking-wide
-                text-[#A8988B]
-
-                sm:mb-6
                 sm:text-xs
-                sm:leading-[1.8]
-
                 md:text-sm
                 lg:text-[13.5px]
+                font-light
+                text-[#A8988B]
+                leading-[1.65]
+                sm:leading-[1.8]
+                tracking-wide
+                max-w-lg
+                mb-4
+                sm:mb-6
               "
               style={{
                 fontFamily: "'Montserrat', sans-serif",
@@ -462,7 +467,7 @@ export const HeroSection: React.FC = () => {
               </p>
             </motion.div>
 
-            {/* Buttons */}
+            {/* CTA Buttons */}
             <motion.div
               variants={fadeUpVariants}
               className="hero-actions flex flex-row items-center gap-2 sm:gap-4 md:gap-6"
@@ -470,44 +475,45 @@ export const HeroSection: React.FC = () => {
                 fontFamily: "'Montserrat', sans-serif",
               }}
             >
+              {/* Explore My Work */}
               <motion.a
                 href="#work"
                 onMouseEnter={() => setIsHovered(true)}
                 onMouseLeave={() => setIsHovered(false)}
                 whileHover={{ scale: 1.02 }}
                 className="
+                  relative
                   inline-flex
                   items-center
                   justify-center
+                  px-4
+                  sm:px-6
+                  md:px-7
+                  py-2.5
+                  sm:py-3.5
                   border
                   border-[#8C6D4F]
                   bg-[#120F0C]/80
-                  px-4
-                  py-2.5
-                  text-[8px]
-                  font-medium
-                  uppercase
-                  tracking-[0.18em]
+                  hover:border-[#D4AF37]
                   text-[#EAD8C7]
-                  shadow-[0_0_25px_rgba(212,175,55,0.18)]
+                  hover:text-[#FFF5EB]
+                  text-[8px]
+                  sm:text-[10px]
+                  md:text-[11px]
+                  font-medium
+                  tracking-[0.18em]
+                  sm:tracking-[0.24em]
+                  uppercase
                   transition-all
                   duration-300
-                  hover:border-[#D4AF37]
-                  hover:text-[#FFF5EB]
-
-                  sm:px-6
-                  sm:py-3.5
-                  sm:text-[10px]
-                  sm:tracking-[0.24em]
-
-                  md:px-7
-                  md:text-[11px]
+                  shadow-[0_0_25px_rgba(212,175,55,0.18)]
                 "
               >
                 <span>EXPLORE MY WORK</span>
                 <span className="ml-2 text-xs">↗</span>
               </motion.a>
 
+              {/* Download Resume */}
               <motion.a
                 href={`${import.meta.env.BASE_URL}Sumit_Panchal_QA_Resume.pdf`}
                 download="Sumit_Panchal_QA_Resume.pdf"
@@ -515,166 +521,60 @@ export const HeroSection: React.FC = () => {
                 onMouseLeave={() => setIsHovered(false)}
                 whileHover={{ scale: 1.02 }}
                 className="
+                  relative
                   inline-flex
                   items-center
                   justify-center
+                  px-4
+                  sm:px-6
+                  md:px-7
+                  py-2.5
+                  sm:py-3.5
                   border
                   border-[#8C6D4F]/40
-                  px-4
-                  py-2.5
-                  text-[8px]
-                  font-medium
-                  uppercase
-                  tracking-[0.18em]
+                  hover:border-[#8C6D4F]
                   text-[#BFA895]
+                  hover:text-[#EAD8C7]
+                  text-[8px]
+                  sm:text-[10px]
+                  md:text-[11px]
+                  font-medium
+                  tracking-[0.18em]
+                  sm:tracking-[0.24em]
+                  uppercase
                   transition-all
                   duration-300
-                  hover:border-[#8C6D4F]
-                  hover:text-[#EAD8C7]
-
-                  sm:px-6
-                  sm:py-3.5
-                  sm:text-[10px]
-                  sm:tracking-[0.24em]
-
-                  md:px-7
-                  md:text-[11px]
                 "
               >
                 <span>DOWNLOAD RESUME</span>
                 <span className="ml-2 text-xs">↓</span>
               </motion.a>
             </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 18 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{
-                delay: 1,
-                duration: 1.1,
-                ease: [0.16, 1, 0.3, 1],
-              }}
-              className="mt-5 select-none pointer-events-auto md:hidden"
-            >
-              <div
-                className="flex flex-col items-start"
-                style={{
-                  fontFamily: "'Montserrat', sans-serif",
-                }}
-              >
-                <div
-                  className="
-                    text-[8.5px]
-                    font-medium
-                    uppercase
-                    tracking-[0.18em]
-                    text-[#E0D3C5]
-
-                    sm:text-[9.5px]
-                    sm:tracking-[0.24em]
-                  "
-                  style={{
-                    lineHeight: 1.65,
-                  }}
-                >
-                  <div className="flex items-baseline whitespace-nowrap">
-                    <span className="mr-1 font-serif text-[16px] leading-none text-[#C99E5D] sm:text-[18px]">
-                      “
-                    </span>
-                    <span>QUALITY IS MY CRAFT.</span>
-                  </div>
-
-                  <div className="flex items-baseline whitespace-nowrap">
-                    <span>RELIABILITY IS MY GOAL.</span>
-                    <span className="ml-1 font-serif text-[16px] leading-none text-[#C99E5D] sm:text-[18px]">
-                      ”
-                    </span>
-                  </div>
-                </div>
-
-                <div className="mt-2.5 w-fit sm:mt-3">
-                  <div
-                    className="
-                      mb-2
-                      h-[1px]
-                      w-full
-                      bg-gradient-to-r
-                      from-[#D4AF37]
-                      via-[#E8D7C5]/70
-                      to-transparent
-                      shadow-[0_0_8px_rgba(212,175,55,0.4)]
-                    "
-                    aria-hidden="true"
-                  />
-
-                  <div
-                    className="
-                      whitespace-nowrap
-                      text-[1.9rem]
-                      font-normal
-                      leading-none
-                      text-[#D8AB64]
-
-                      sm:text-[2.2rem]
-                    "
-                    style={{
-                      fontFamily: "'Great Vibes', 'Allura', cursive",
-                      letterSpacing: '0.04em',
-                    }}
-                  >
-                    Sumit Panchal
-                  </div>
-                </div>
-
-                <div
-                  className="
-                    mt-1.5
-                    text-[8.5px]
-                    font-medium
-                    uppercase
-                    tracking-[0.18em]
-                    text-[#E0D3C5]
-
-                    sm:mt-2
-                    sm:text-[9.5px]
-                    sm:tracking-[0.24em]
-                  "
-                  style={{
-                    fontFamily: "'Montserrat', sans-serif",
-                  }}
-                >
-                  <p>QUALITY ANALYST.</p>
-                </div>
-              </div>
-            </motion.div>
           </motion.div>
         </div>
 
         {/* =======================================================
-            DESKTOP QUOTE / SIGNATURE
+            7. MOBILE QUOTE / SIGNATURE
+            STATIC BOTTOM POSITION
         ======================================================= */}
         <motion.div
-          initial={{ opacity: 0, x: 20 }}
-          animate={{ opacity: 1, x: 0 }}
+          initial={{ opacity: 0, y: 18 }}
+          animate={{ opacity: 1, y: 0 }}
           transition={{
-            delay: 0.8,
-            duration: 1.2,
+            delay: 1,
+            duration: 1.1,
             ease: [0.16, 1, 0.3, 1],
           }}
           className="
             absolute
-            right-16
-            top-1/2
+            left-6
+            bottom-8
+            sm:left-12
+            sm:bottom-10
             z-20
-            hidden
-            -translate-y-1/2
-            select-none
-            flex-col
-            items-start
             pointer-events-auto
-
-            xl:right-24
-            md:flex
+            select-none
+            md:hidden
           "
         >
           <div
@@ -685,14 +585,29 @@ export const HeroSection: React.FC = () => {
           >
             {/* Quote */}
             <div
-              className="text-[9.5px] font-medium uppercase tracking-[0.24em] text-[#E0D3C5]"
+              className="
+                text-[8.5px]
+                sm:text-[9.5px]
+                font-medium
+                tracking-[0.18em]
+                sm:tracking-[0.24em]
+                uppercase
+                text-[#E0D3C5]
+              "
               style={{
-                lineHeight: 1.7,
+                lineHeight: 1.65,
               }}
             >
               <div className="flex items-baseline whitespace-nowrap">
                 <span
-                  className="mr-1 font-serif text-[18px] leading-none text-[#C99E5D]"
+                  className="
+                    text-[16px]
+                    sm:text-[18px]
+                    text-[#C99E5D]
+                    font-serif
+                    leading-none
+                    mr-1
+                  "
                 >
                   “
                 </span>
@@ -704,20 +619,162 @@ export const HeroSection: React.FC = () => {
                 <span>RELIABILITY IS MY GOAL.</span>
 
                 <span
-                  className="ml-1 font-serif text-[18px] leading-none text-[#C99E5D]"
+                  className="
+                    text-[16px]
+                    sm:text-[18px]
+                    text-[#C99E5D]
+                    font-serif
+                    leading-none
+                    ml-1
+                  "
                 >
                   ”
                 </span>
               </div>
             </div>
 
-            {/* Gold line + signature */}
-            <div className="mt-3 w-fit">
+            {/* Gold Line */}
+            <div className="w-fit mt-2.5 sm:mt-3">
               <div
                 className="
-                  mb-2
-                  h-[1px]
                   w-full
+                  h-[1px]
+                  mb-2
+                  bg-gradient-to-r
+                  from-[#D4AF37]
+                  via-[#E8D7C5]/70
+                  to-transparent
+                  shadow-[0_0_8px_rgba(212,175,55,0.4)]
+                "
+                aria-hidden="true"
+              />
+
+              {/* Signature */}
+              <div
+                className="
+                  text-[1.9rem]
+                  sm:text-[2.2rem]
+                  text-[#D8AB64]
+                  font-normal
+                  leading-none
+                  whitespace-nowrap
+                "
+                style={{
+                  fontFamily: "'Great Vibes', 'Allura', cursive",
+                  letterSpacing: '0.04em',
+                }}
+              >
+                Sumit Panchal
+              </div>
+            </div>
+
+            {/* Job Role */}
+            <div
+              className="
+                mt-1.5
+                sm:mt-2
+                text-[8.5px]
+                sm:text-[9.5px]
+                font-medium
+                tracking-[0.18em]
+                sm:tracking-[0.24em]
+                uppercase
+                text-[#E0D3C5]
+              "
+              style={{
+                fontFamily: "'Montserrat', sans-serif",
+              }}
+            >
+              <p>QUALITY ANALYST.</p>
+            </div>
+          </div>
+        </motion.div>
+
+        {/* =======================================================
+            8. DESKTOP QUOTE / SIGNATURE
+        ======================================================= */}
+        <motion.div
+          initial={{ opacity: 0, x: 20 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{
+            delay: 0.8,
+            duration: 1.2,
+            ease: [0.16, 1, 0.3, 1],
+          }}
+          className="
+            hidden
+            md:flex
+            absolute
+            right-16
+            xl:right-24
+            top-1/2
+            -translate-y-1/2
+            z-20
+            flex-col
+            items-start
+            pointer-events-auto
+            select-none
+          "
+        >
+          <div
+            className="flex flex-col items-start"
+            style={{
+              fontFamily: "'Montserrat', sans-serif",
+            }}
+          >
+            {/* Quote */}
+            <div
+              className="
+                text-[9.5px]
+                font-medium
+                tracking-[0.24em]
+                uppercase
+                text-[#E0D3C5]
+              "
+              style={{
+                lineHeight: 1.7,
+              }}
+            >
+              <div className="flex items-baseline whitespace-nowrap">
+                <span
+                  className="
+                    text-[18px]
+                    text-[#C99E5D]
+                    font-serif
+                    leading-none
+                    mr-1
+                  "
+                >
+                  “
+                </span>
+
+                <span>QUALITY IS MY CRAFT.</span>
+              </div>
+
+              <div className="flex items-baseline whitespace-nowrap">
+                <span>RELIABILITY IS MY GOAL.</span>
+
+                <span
+                  className="
+                    text-[18px]
+                    text-[#C99E5D]
+                    font-serif
+                    leading-none
+                    ml-1
+                  "
+                >
+                  ”
+                </span>
+              </div>
+            </div>
+
+            {/* Gold Line */}
+            <div className="w-fit mt-3">
+              <div
+                className="
+                  w-full
+                  h-[1px]
+                  mb-2
                   bg-gradient-to-r
                   from-[#D4AF37]
                   via-[#E8D7C5]/70
@@ -728,7 +785,13 @@ export const HeroSection: React.FC = () => {
               />
 
               <div
-                className="whitespace-nowrap text-[2.2rem] font-normal leading-none text-[#D8AB64]"
+                className="
+                  text-[2.2rem]
+                  text-[#D8AB64]
+                  font-normal
+                  leading-none
+                  whitespace-nowrap
+                "
                 style={{
                   fontFamily: "'Great Vibes', 'Allura', cursive",
                   letterSpacing: '0.04em',
@@ -738,9 +801,16 @@ export const HeroSection: React.FC = () => {
               </div>
             </div>
 
-            {/* Job role */}
+            {/* Job Role */}
             <div
-              className="mt-2 text-[9.5px] font-medium uppercase tracking-[0.24em] text-[#E0D3C5]"
+              className="
+                mt-2
+                text-[9.5px]
+                font-medium
+                tracking-[0.24em]
+                uppercase
+                text-[#E0D3C5]
+              "
               style={{
                 fontFamily: "'Montserrat', sans-serif",
               }}
