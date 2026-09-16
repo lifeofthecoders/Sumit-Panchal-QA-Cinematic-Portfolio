@@ -26,11 +26,16 @@
   overflow: hidden;
 }
 
-/* Desktop only: uniform height so rear cards never peek under the front card */
+/* Desktop only: force inner bordered card to fill equal stack-card height */
 @media (min-width: 768px) {
   .scroll-stack-card {
-    /* min-height set in JS to the tallest card; keep overflow clipped */
     overflow: hidden;
+  }
+
+  .scroll-stack-card .project-card {
+    height: 100%;
+    min-height: 100%;
+    box-sizing: border-box;
   }
 }
 
