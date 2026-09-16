@@ -276,8 +276,9 @@ const ScrollStack: React.FC<ScrollStackProps> = ({
 
     const equalizeDesktopHeights = () => {
       if (typeof window === 'undefined' || window.innerWidth < 768) return;
+      if (!cards.length) return;
 
-      // Reset so we measure natural content height of each card
+      // Reset to natural content size before measuring card 1
       cards.forEach((card) => {
         card.style.minHeight = '';
         card.style.height = 'auto';
@@ -288,29 +289,25 @@ const ScrollStack: React.FC<ScrollStackProps> = ({
         }
       });
 
-      // Force layout read
       void (cards[0] && cards[0].offsetHeight);
 
-      // Tallest natural height among all project cards
-      const maxH = cards.reduce((m, card) => {
-        const inner = card.querySelector('.project-card') as HTMLElement | null;
-        const h = inner ? inner.offsetHeight : card.offsetHeight;
-        return Math.max(m, h);
-      }, 0);
+      // Use 1st card height as the shared height for cards 2, 3, 4
+      const firstInner = cards[0].querySelector('.project-card') as HTMLElement | null;
+      const targetH = firstInner ? firstInner.offsetHeight : cards[0].offsetHeight;
+      if (!targetH) return;
 
-      if (maxH > 0) {
-        cards.forEach((card) => {
-          // Explicit height so percentage children fill the box
-          card.style.height = `${maxH}px`;
-          card.style.minHeight = `${maxH}px`;
-          card.style.overflow = 'hidden';
-          const inner = card.querySelector('.project-card') as HTMLElement | null;
-          if (inner) {
-            inner.style.height = '100%';
-            inner.style.minHeight = '100%';
-          }
-        });
-      }
+      cards.forEach((card) => {
+        card.style.height = `${targetH}px`;
+        card.style.minHeight = `${targetH}px`;
+        card.style.overflow = 'hidden';
+        const inner = card.querySelector('.project-card') as HTMLElement | null;
+        if (inner) {
+          // Fill the equal frame; content stays top-aligned (no flex stretch)
+          inner.style.height = '100%';
+          inner.style.minHeight = '100%';
+          inner.style.boxSizing = 'border-box';
+        }
+      });
     };
 
     equalizeDesktopHeights();
