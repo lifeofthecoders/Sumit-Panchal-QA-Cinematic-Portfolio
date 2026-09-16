@@ -69,8 +69,18 @@ export const AboutSection: React.FC = () => {
   return (
     <section 
       id="about" 
-      className="relative w-screen min-h-screen bg-black text-[#E8DFD8] font-sans selection:bg-[#cbb59d] selection:text-black py-24 lg:py-32 px-6 sm:px-12 lg:px-20 overflow-hidden flex items-center"
+      className="relative w-screen min-h-screen bg-black text-[#E8DFD8] font-sans selection:bg-[#cbb59d] selection:text-black pt-16 pb-16 sm:pt-20 sm:pb-20 lg:pt-24 lg:pb-24 px-6 sm:px-12 lg:px-20 overflow-hidden flex items-center"
     >
+      {/* Section split line */}
+      <div
+        className="absolute top-0 left-0 right-0 z-20 pointer-events-none"
+        aria-hidden="true"
+      >
+        <div className="mx-auto max-w-7xl px-6 sm:px-12 lg:px-20">
+          <div className="w-full h-[1px] bg-gradient-to-r from-transparent via-[#8C6D4F]/55 to-transparent" />
+        </div>
+      </div>
+
       {/* ================= BACKGROUND GLOWS & FLOATING PARTICLES ================= */}
       <motion.div 
         animate={{ scale: [1, 1.2, 1], opacity: [0.08, 0.16, 0.08] }}

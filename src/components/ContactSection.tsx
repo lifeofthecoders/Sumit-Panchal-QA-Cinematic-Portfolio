@@ -81,8 +81,18 @@ export const ContactSection: React.FC = () => {
   return (
     <footer
       id="contact"
-      className="relative w-full bg-black text-[#E8DFD8] font-sans selection:bg-[#cbb59d] selection:text-black pt-20 sm:pt-16 pb-20 sm:pb-16 px-6 sm:px-12 lg:px-20 overflow-hidden"
+      className="relative w-full bg-black text-[#E8DFD8] font-sans selection:bg-[#cbb59d] selection:text-black pt-16 pb-16 sm:pt-20 sm:pb-20 lg:pt-24 lg:pb-24 px-6 sm:px-12 lg:px-20 overflow-hidden"
     >
+      {/* Section split line */}
+      <div
+        className="absolute top-0 left-0 right-0 z-20 pointer-events-none"
+        aria-hidden="true"
+      >
+        <div className="mx-auto max-w-7xl px-6 sm:px-12 lg:px-20">
+          <div className="w-full h-[1px] bg-gradient-to-r from-transparent via-[#8C6D4F]/55 to-transparent" />
+        </div>
+      </div>
+
       <div className="max-w-7xl mx-auto w-full relative z-10">
 
         {/* Split Grid */}
