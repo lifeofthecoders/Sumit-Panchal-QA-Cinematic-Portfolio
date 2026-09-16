@@ -454,6 +454,7 @@ export const HeroSection: React.FC = () => {
                 className="hero-signature"
                 style={{
                   fontFamily: "'Great Vibes', 'Allura', cursive",
+                  marginTop: '4px',
                 }}
               >
                 Sumit Panchal
@@ -481,8 +482,8 @@ export const HeroSection: React.FC = () => {
             ease: [0.16, 1, 0.3, 1],
           }}
           className="
-            mt-8
-            mb-2
+            mt-3
+            mb-1
             w-full
             pointer-events-auto
             select-none

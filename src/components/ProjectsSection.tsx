@@ -106,8 +106,18 @@ export const ProjectsSection: React.FC = () => {
   return (
     <section
       id="work"
-      className="projects-section relative w-full bg-black text-[#E8DFD8] font-sans selection:bg-[#cbb59d] selection:text-black pt-16 sm:pt-20 pb-40 sm:pb-36 lg:pb-32 px-6 sm:px-12 lg:px-20"
+      className="projects-section relative w-full bg-black text-[#E8DFD8] font-sans selection:bg-[#cbb59d] selection:text-black pt-16 pb-28 sm:pt-20 sm:pb-28 lg:pt-24 lg:pb-32 px-6 sm:px-12 lg:px-20"
     >
+      {/* Section split line */}
+      <div
+        className="absolute top-0 left-0 right-0 z-20 pointer-events-none"
+        aria-hidden="true"
+      >
+        <div className="mx-auto max-w-7xl px-6 sm:px-12 lg:px-20">
+          <div className="w-full h-[1px] bg-gradient-to-r from-transparent via-[#8C6D4F]/55 to-transparent" />
+        </div>
+      </div>
+
       {/* Studio Ambient Glows */}
       <div className="absolute top-1/4 left-1/3 w-[36rem] h-[36rem] bg-[#D4AF37]/5 rounded-full blur-[180px] pointer-events-none" />
       <div className="absolute bottom-1/4 right-1/4 w-[30rem] h-[30rem] bg-[#8C6D4F]/5 rounded-full blur-[170px] pointer-events-none" />

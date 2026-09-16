@@ -99,8 +99,18 @@ export const SkillsSection: React.FC = () => {
   return (
     <section
       id="skills"
-      className="relative w-screen bg-black text-[#E8DFD8] font-sans selection:bg-[#cbb59d] selection:text-black pt-20 sm:pt-16 md:pt-12 pb-24 sm:pb-28 px-6 sm:px-12 lg:px-20 overflow-hidden flex flex-col justify-center"
+      className="relative w-screen bg-black text-[#E8DFD8] font-sans selection:bg-[#cbb59d] selection:text-black pt-16 pb-16 sm:pt-20 sm:pb-20 lg:pt-24 lg:pb-24 px-6 sm:px-12 lg:px-20 overflow-hidden flex flex-col justify-center"
     >
+      {/* Section split line */}
+      <div
+        className="absolute top-0 left-0 right-0 z-20 pointer-events-none"
+        aria-hidden="true"
+      >
+        <div className="mx-auto max-w-7xl px-6 sm:px-12 lg:px-20">
+          <div className="w-full h-[1px] bg-gradient-to-r from-transparent via-[#8C6D4F]/55 to-transparent" />
+        </div>
+      </div>
+
       {/* Ambient Glows */}
       <div className="absolute top-1/3 left-1/4 w-[34rem] h-[34rem] bg-[#D4AF37]/5 rounded-full blur-[170px] pointer-events-none" />
       <div className="absolute bottom-10 right-1/4 w-[28rem] h-[28rem] bg-[#8C6D4F]/5 rounded-full blur-[160px] pointer-events-none" />

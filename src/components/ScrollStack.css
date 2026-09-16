@@ -9,7 +9,7 @@
   position: relative;
   width: 100%;
   padding-top: 4vh;
-  padding-bottom: 50vh;
+  padding-bottom: 40vh;
   overflow: visible;
 }
 
@@ -31,7 +31,7 @@
   .scroll-stack-inner {
     padding-top: 4vh;
     /* Runway so stack finishes; keep gap reasonable before QA Expertise */
-    padding-bottom: 40vh;
+    padding-bottom: 28vh;
   }
 
   .scroll-stack-card {
