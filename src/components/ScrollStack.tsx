@@ -275,7 +275,56 @@ const ScrollStack: React.FC<ScrollStackProps> = ({
       card.style.perspective = '1000px';
     });
 
+    const equalizeDesktopHeights = () => {
+      if (mobile || !cards.length) return;
+
+      cards.forEach((card) => {
+        card.style.height = 'auto';
+        card.style.minHeight = '';
+        card.style.maxHeight = '';
+        const inner = card.querySelector('.project-card') as HTMLElement | null;
+        if (inner) {
+          inner.style.height = 'auto';
+          inner.style.minHeight = '';
+          inner.style.maxHeight = '';
+        }
+      });
+
+      let targetHeight = 0;
+      cards.forEach((card) => {
+        const previousTransform = card.style.transform;
+        card.style.transform = 'none';
+        const inner = card.querySelector('.project-card') as HTMLElement | null;
+        targetHeight = Math.max(
+          targetHeight,
+          inner?.scrollHeight ?? 0
+        );
+        card.style.transform = previousTransform;
+      });
+
+      if (!targetHeight) return;
+      targetHeight = Math.ceil(targetHeight + 8);
+
+      cards.forEach((card) => {
+        card.style.height = `${targetHeight}px`;
+        card.style.minHeight = `${targetHeight}px`;
+        card.style.maxHeight = `${targetHeight}px`;
+        const inner = card.querySelector('.project-card') as HTMLElement | null;
+        if (inner) {
+          inner.style.height = `${targetHeight}px`;
+          inner.style.minHeight = `${targetHeight}px`;
+          inner.style.maxHeight = `${targetHeight}px`;
+          inner.style.boxSizing = 'border-box';
+          inner.style.overflow = 'hidden';
+        }
+      });
+    };
+
+    equalizeDesktopHeights();
+    measureTops();
+
     const remeasure = () => {
+      equalizeDesktopHeights();
       measureTops();
       updateCardTransforms();
     };

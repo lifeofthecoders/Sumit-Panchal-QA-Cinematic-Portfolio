@@ -25,6 +25,50 @@
   overflow: hidden;
 }
 
+/* Desktop only — mask the overlap below the front card without changing its height */
+@media (min-width: 768px) {
+  .scroll-stack-card {
+    overflow: visible !important;
+  }
+
+  .scroll-stack-card::after {
+    content: '';
+    position: absolute;
+    top: calc(100% - 1px);
+    left: 0;
+    right: 0;
+    height: 72px;
+    background: #000;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .scroll-stack-card .project-card {
+    box-sizing: border-box;
+    overflow: hidden !important;
+    position: relative;
+    z-index: 1;
+    padding: 2rem !important;
+  }
+
+  .scroll-stack-card .project-card .grid {
+    gap: 1.5rem;
+  }
+
+  .scroll-stack-card .project-card-title {
+    margin-bottom: 0.75rem;
+  }
+
+  .scroll-stack-card .project-card p {
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+  }
+
+  .scroll-stack-card .project-card .flex.flex-wrap {
+    padding-top: 1rem;
+  }
+}
+
 /* Mobile — keep current working responsiveness (do not change) */
 @media (max-width: 767px) {
   .scroll-stack-inner {
