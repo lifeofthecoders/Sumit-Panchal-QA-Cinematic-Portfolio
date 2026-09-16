@@ -23,22 +23,21 @@
   transform-style: preserve-3d;
   -webkit-transform: translateZ(0);
   transform: translateZ(0);
-  /* visible so scaled borders / shadows are never clipped */
-  overflow: visible;
+  overflow: hidden; /* hide any rear-card content that would peek past the front card */
 }
 
 @media (max-width: 767px) {
   .scroll-stack-inner {
     padding-top: 4vh;
-    /* Runway so stack finishes; keep gap reasonable before QA Expertise */
     padding-bottom: 28vh;
   }
 
   .scroll-stack-card {
-    /* min-height only — never force a fixed height that cuts content/borders */
+    /* Uniform height so a shorter front card never reveals the bottom of a taller rear card */
     height: auto !important;
-    min-height: 0 !important;
+    min-height: 720px !important;
     margin-bottom: 18px !important;
+    overflow: hidden !important;
   }
 }
 

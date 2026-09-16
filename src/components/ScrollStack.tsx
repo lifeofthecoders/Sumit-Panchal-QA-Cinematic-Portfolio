@@ -87,13 +87,13 @@ const ScrollStack: React.FC<ScrollStackProps> = ({
     isUpdatingRef.current = true;
 
     const mobile = typeof window !== 'undefined' && window.innerWidth < 768;
-    const effectiveItemScale = mobile ? Math.min(itemScale, 0.015) : itemScale;
-    const effectiveStackDistance = mobile ? Math.min(itemStackDistance, 12) : itemStackDistance;
+    const effectiveItemScale = mobile ? Math.min(itemScale, 0.02) : itemScale;
+    const effectiveStackDistance = mobile ? Math.min(itemStackDistance, 16) : itemStackDistance;
     // Center card in viewport: top of card sits so card body is mid-screen
     // (~12–16% from top works for typical ~65–75% card height on phones)
     const effectiveStackPosition = mobile ? '12%' : stackPosition;
     const effectiveScaleEndPosition = mobile ? '6%' : scaleEndPosition;
-    const effectiveBaseScale = mobile ? 0.96 : baseScale;
+    const effectiveBaseScale = mobile ? 0.94 : baseScale;
 
     const { scrollTop, containerHeight } = getScrollData();
     const stackPositionPx = parsePercentage(effectiveStackPosition, containerHeight);
@@ -258,12 +258,14 @@ const ScrollStack: React.FC<ScrollStackProps> = ({
         card.style.marginBottom = `${effectiveItemDistance}px`;
       }
       if (mobile) {
-        // Let content define height so borders/content are never cut off
+        // Uniform min-height so rear cards cannot peek below a shorter front card
         card.style.height = 'auto';
-        card.style.minHeight = '0';
+        card.style.minHeight = '720px';
+        card.style.overflow = 'hidden';
       } else {
         card.style.height = '';
         card.style.minHeight = '';
+        card.style.overflow = '';
       }
       card.style.willChange = 'transform, filter';
       card.style.transformOrigin = 'top center';
