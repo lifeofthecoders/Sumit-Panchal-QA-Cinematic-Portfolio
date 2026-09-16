@@ -50,7 +50,6 @@ const ScrollStack: React.FC<ScrollStackProps> = ({
   const lenisRef = useRef<Lenis | null>(null);
   const cardsRef = useRef<HTMLElement[]>([]);
   const initialTopsRef = useRef<number[]>([]);
-  const mobileCenterOffsetsRef = useRef<number[]>([]);
   const lastTransformsRef = useRef(new Map());
   const isUpdatingRef = useRef(false);
 
@@ -90,12 +89,12 @@ const ScrollStack: React.FC<ScrollStackProps> = ({
     const mobile = typeof window !== 'undefined' && window.innerWidth < 768;
     const effectiveItemScale = mobile ? Math.min(itemScale, 0.02) : itemScale;
     const effectiveStackDistance = mobile ? Math.min(itemStackDistance, 18) : itemStackDistance;
-    const effectiveStackPosition = mobile ? 88 : stackPosition;
-    const effectiveScaleEndPosition = mobile ? 40 : scaleEndPosition;
+    const effectiveStackPosition = mobile ? '22%' : stackPosition;
+    const effectiveScaleEndPosition = mobile ? '10%' : scaleEndPosition;
     const effectiveBaseScale = mobile ? 0.94 : baseScale;
 
     const { scrollTop, containerHeight } = getScrollData();
-    const fallbackStackPositionPx = parsePercentage(effectiveStackPosition, containerHeight);
+    const stackPositionPx = parsePercentage(effectiveStackPosition, containerHeight);
     const scaleEndPositionPx = parsePercentage(effectiveScaleEndPosition, containerHeight);
 
     const endElement = useWindowScroll
@@ -108,15 +107,6 @@ const ScrollStack: React.FC<ScrollStackProps> = ({
 
     cardsRef.current.forEach((card, i) => {
       if (!card) return;
-
-      // On mobile, each card gets its own top offset derived from its actual
-      // rendered height so the whole card sits centered in the viewport
-      // (equal breathing room above and below) instead of being pinned to a
-      // single fixed offset that only fits some of the cards.
-      const stackPositionPx =
-        mobile && mobileCenterOffsetsRef.current[i] != null
-          ? mobileCenterOffsetsRef.current[i]
-          : fallbackStackPositionPx;
 
       const cardTop = initialTopsRef.current[i] || 0;
       const triggerStart = cardTop - stackPositionPx - effectiveStackDistance * i;
@@ -134,11 +124,7 @@ const ScrollStack: React.FC<ScrollStackProps> = ({
         let topCardIndex = 0;
         for (let j = 0; j < cardsRef.current.length; j++) {
           const jCardTop = initialTopsRef.current[j] || 0;
-          const jStackPositionPx =
-            mobile && mobileCenterOffsetsRef.current[j] != null
-              ? mobileCenterOffsetsRef.current[j]
-              : fallbackStackPositionPx;
-          const jTriggerStart = jCardTop - jStackPositionPx - effectiveStackDistance * j;
+          const jTriggerStart = jCardTop - stackPositionPx - effectiveStackDistance * j;
           if (scrollTop >= jTriggerStart) {
             topCardIndex = j;
           }
@@ -252,10 +238,6 @@ const ScrollStack: React.FC<ScrollStackProps> = ({
 
     const mobile = typeof window !== 'undefined' && window.innerWidth < 768;
     const effectiveItemDistance = mobile ? Math.min(itemDistance, 24) : itemDistance;
-    // Reserved space for the fixed mobile header/top clearance and a little
-    // breathing room at the bottom, used to fit and center each card.
-    const mobileTopClearance = 84;
-    const mobileBottomClearance = 24;
 
     cards.forEach((card, i) => {
       card.style.zIndex = `${i + 1}`;
@@ -263,15 +245,11 @@ const ScrollStack: React.FC<ScrollStackProps> = ({
         card.style.marginBottom = `${effectiveItemDistance}px`;
       }
       if (mobile) {
-        card.style.height = '';
-        card.style.minHeight = '';
-        card.style.maxHeight = `calc(100svh - ${mobileTopClearance + mobileBottomClearance}px)`;
-        card.style.overflowY = 'auto';
+        card.style.height = 'clamp(620px, 72vh, 760px)';
+        card.style.minHeight = 'clamp(620px, 72vh, 760px)';
       } else {
         card.style.height = '';
         card.style.minHeight = '';
-        card.style.maxHeight = '';
-        card.style.overflowY = '';
       }
       card.style.willChange = 'transform, filter';
       card.style.transformOrigin = 'top center';
@@ -279,20 +257,6 @@ const ScrollStack: React.FC<ScrollStackProps> = ({
       card.style.transform = 'translateZ(0)';
       card.style.perspective = '1000px';
     });
-
-    // Now that each card has its real (auto, viewport-capped) height, work
-    // out a per-card offset that centers the whole card vertically in the
-    // viewport, so it's fully visible from top to bottom while pinned.
-    const viewportHeight = typeof window !== 'undefined' ? window.innerHeight : 0;
-    if (mobile && viewportHeight) {
-      mobileCenterOffsetsRef.current = cards.map((card) => {
-        const renderedHeight = card.getBoundingClientRect().height;
-        const centered = (viewportHeight - renderedHeight) / 2;
-        return Math.max(mobileTopClearance, centered);
-      });
-    } else {
-      mobileCenterOffsetsRef.current = [];
-    }
 
     setupLenis();
     updateCardTransforms();
