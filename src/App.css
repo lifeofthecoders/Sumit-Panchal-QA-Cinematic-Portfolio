@@ -11,6 +11,7 @@
   &:hover {
     border-color: var(--accent-border);
   }
+
   &:focus-visible {
     outline: 2px solid var(--accent);
     outline-offset: 2px;
@@ -78,6 +79,7 @@
   & > div {
     flex: 1 1 0;
     padding: 32px;
+
     @media (max-width: 1024px) {
       padding: 24px 20px;
     }
@@ -130,6 +132,7 @@
     &:hover {
       box-shadow: var(--shadow);
     }
+
     .button-icon {
       height: 18px;
       width: 18px;
@@ -156,6 +159,7 @@
 #spacer {
   height: 88px;
   border-top: 1px solid var(--border);
+
   @media (max-width: 1024px) {
     height: 48px;
   }
@@ -177,6 +181,7 @@
     left: 0;
     border-left-color: var(--border);
   }
+
   &::after {
     right: 0;
     border-right-color: var(--border);
@@ -220,6 +225,10 @@
 .skills-bento-card {
   transition: all 0.3s ease;
 }
+
+/* =========================================================
+   HERO MEDIA
+   ========================================================= */
 
 .hero-media {
   isolation: isolate;
@@ -282,6 +291,91 @@
   margin-left: 0;
 }
 
+/* =========================================================
+   HERO QUOTE / SIGNATURE
+   ========================================================= */
+
+.hero-quote-block {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: fit-content;
+}
+
+.hero-quote-text {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: fit-content;
+  font-size: 9.5px;
+  font-weight: 500;
+  letter-spacing: 0.24em;
+  line-height: 1.7;
+  text-transform: uppercase;
+  color: #E0D3C5;
+}
+
+.hero-quote-line {
+  display: flex;
+  align-items: baseline;
+  width: fit-content;
+  white-space: nowrap;
+}
+
+.hero-quote-mark {
+  color: #C99E5D;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 18px;
+  line-height: 1;
+}
+
+.hero-quote-mark.open {
+  margin-right: 5px;
+}
+
+.hero-quote-mark.close {
+  margin-left: 5px;
+}
+
+/*
+  Gold line follows the quote block width.
+  Because .hero-quote-block and .hero-quote-text use width: fit-content,
+  this line ends at the closing quote after MY GOAL.
+*/
+.hero-quote-gold-line {
+  width: 100%;
+  height: 1px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  background: linear-gradient(to right, #D4AF37, rgb(232 215 197 / 70%), transparent);
+  box-shadow: 0 0 8px rgba(212, 175, 55, 0.4);
+  flex-shrink: 0;
+}
+
+.hero-signature {
+  font-size: 2.2rem;
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: 0.04em;
+  color: #D8AB64;
+  white-space: nowrap;
+}
+
+.hero-role {
+  margin-top: 8px;
+  font-family: "Montserrat", sans-serif;
+  font-size: 9.5px;
+  font-weight: 500;
+  letter-spacing: 0.24em;
+  line-height: 1.2;
+  text-transform: uppercase;
+  color: #E0D3C5;
+}
+
+/* =========================================================
+   DESKTOP
+   ========================================================= */
+
 @media (min-width: 768px) {
   .hero-header {
     display: flex;
@@ -303,6 +397,10 @@
   }
 }
 
+/* =========================================================
+   TABLET
+   ========================================================= */
+
 @media (min-width: 768px) and (max-width: 1023px) {
   .hero-header {
     flex-wrap: wrap;
@@ -322,12 +420,19 @@
   }
 }
 
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
 @media (max-width: 767px) {
   .hero-section {
     min-height: 100svh;
   }
 
   .hero-content-shell {
+    height: auto;
+    min-height: 100svh;
+    justify-content: flex-start;
     padding-top: 0.9rem;
   }
 
@@ -336,11 +441,14 @@
     align-items: center;
   }
 
+  /*
+    The mobile Hero keeps a controlled gap below the navbar.
+    This is independent of hamburger open/close state.
+  */
   .hero-main-row {
-    /* Slightly more breathing room below the navbar (issue: hero sat too
-       close to the header). Kept independent of the hamburger menu, which
-       is now a fixed overlay and never affects this spacing. */
-    padding-top: 2.1rem;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-top: clamp(2.5rem, 9vw, 3.25rem);
   }
 
   .hero-brand {
@@ -363,20 +471,26 @@
     gap: 0.75rem;
   }
 
-  /* Mobile nav overlay is fixed to the viewport (not the header box), so
-     opening/closing it can never change the header's height or push the
-     "I BUILD QUALITY EXPERIENCES" hero content up or down. */
+  /*
+    Existing mobile menu behavior.
+    The menu is fixed and does not change the header layout.
+  */
   .hero-mobile-menu {
     top: 4.75rem;
     max-height: calc(100svh - 5.5rem);
     overflow-y: auto;
   }
 
+  /*
+    Fixed visual rhythm for the rest of the page.
+  */
+  #about,
   .projects-section,
   #skills,
   #experience,
   #contact {
     padding-top: 4rem;
+    padding-bottom: 4rem;
   }
 
   .hero-contact {
@@ -397,10 +511,50 @@
     text-align: center;
   }
 
-  .projects-section {
-    padding-top: 4.5rem;
-    padding-bottom: 6rem;
+  /* =========================================================
+     MOBILE QUOTE
+     ========================================================= */
+
+  .hero-quote-block {
+    width: fit-content;
   }
+
+  .hero-quote-text {
+    font-size: 8.5px;
+    letter-spacing: 0.18em;
+    line-height: 1.65;
+  }
+
+  .hero-quote-mark {
+    font-size: 16px;
+  }
+
+  .hero-quote-mark.open {
+    margin-right: 4px;
+  }
+
+  .hero-quote-mark.close {
+    margin-left: 4px;
+  }
+
+  .hero-quote-gold-line {
+    margin-top: 9px;
+    margin-bottom: 9px;
+  }
+
+  .hero-signature {
+    font-size: 1.9rem;
+  }
+
+  .hero-role {
+    margin-top: 6px;
+    font-size: 8.5px;
+    letter-spacing: 0.18em;
+  }
+
+  /* =========================================================
+     PROJECT CARDS
+     ========================================================= */
 
   .project-card {
     padding: 1.5rem 1.1rem;
@@ -444,6 +598,10 @@
     font-size: clamp(3.5rem, 18vw, 5.5rem);
     z-index: 2;
   }
+
+  /* =========================================================
+     SKILLS
+     ========================================================= */
 
   .skills-header-title {
     font-size: clamp(2.4rem, 11vw, 4.2rem);
