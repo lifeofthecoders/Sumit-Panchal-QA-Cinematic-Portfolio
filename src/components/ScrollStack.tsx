@@ -87,12 +87,13 @@ const ScrollStack: React.FC<ScrollStackProps> = ({
     isUpdatingRef.current = true;
 
     const mobile = typeof window !== 'undefined' && window.innerWidth < 768;
-    // Mobile: keep current working values. Desktop: reference stack behaviour.
-    const effectiveItemScale = mobile ? Math.min(itemScale, 0.02) : itemScale;
-    const effectiveStackDistance = mobile ? Math.min(itemStackDistance, 16) : itemStackDistance;
+    const desktopVisualScale = 0.9;
+    // Keep the card deck visually fixed to a 90% desktop composition without touching the rest of the project section.
+    const effectiveItemScale = mobile ? Math.min(itemScale, 0.02) : itemScale * desktopVisualScale;
+    const effectiveStackDistance = mobile ? Math.min(itemStackDistance, 16) : itemStackDistance * desktopVisualScale;
     const effectiveStackPosition = mobile ? '12%' : stackPosition;
     const effectiveScaleEndPosition = mobile ? '6%' : scaleEndPosition;
-    const effectiveBaseScale = mobile ? 0.94 : baseScale;
+    const effectiveBaseScale = mobile ? 0.94 : baseScale * desktopVisualScale;
 
     const { scrollTop, containerHeight } = getScrollData();
     const stackPositionPx = parsePercentage(effectiveStackPosition, containerHeight);
@@ -248,7 +249,8 @@ const ScrollStack: React.FC<ScrollStackProps> = ({
     measureTops();
 
     const mobile = typeof window !== 'undefined' && window.innerWidth < 768;
-    const effectiveItemDistance = mobile ? Math.min(itemDistance, 20) : itemDistance;
+    const desktopVisualScale = 0.9;
+    const effectiveItemDistance = mobile ? Math.min(itemDistance, 20) : itemDistance * desktopVisualScale;
 
     cards.forEach((card, i) => {
       card.style.zIndex = `${i + 1}`;
@@ -303,7 +305,7 @@ const ScrollStack: React.FC<ScrollStackProps> = ({
       });
 
       if (!targetHeight) return;
-      targetHeight = Math.ceil(targetHeight + 8);
+      targetHeight = Math.ceil(targetHeight + 26);
 
       cards.forEach((card) => {
         card.style.height = `${targetHeight}px`;
