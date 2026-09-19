@@ -2,7 +2,8 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import type { Variants } from 'framer-motion';
-import watermarkImg from '../assets/watermark.png';
+
+const logoSvg = `${import.meta.env.BASE_URL}logo/logo.svg`;
 
 const containerVariants: Variants = {
   hidden: { opacity: 0 },
@@ -145,9 +146,9 @@ export const HeroSection: React.FC = () => {
               className="relative flex items-center justify-center"
             >
               <img
-                src={watermarkImg}
-                alt="Insignia"
-                className="w-28 h-28 lg:w-32 lg:h-32 object-contain drop-shadow-[0_0_15px_rgba(212,175,55,0.25)]"
+                src={logoSvg}
+                alt="Sumit Panchal logo"
+                className="w-[65px] h-[65px] object-contain drop-shadow-[0_0_15px_rgba(212,175,55,0.25)]"
               />
             </motion.div>
           </div>
@@ -384,7 +385,7 @@ export const HeroSection: React.FC = () => {
 
               {/* Download Resume */}
               <motion.a
-                href={`${import.meta.env.BASE_URL}Sumit_Panchal_QA_Resume.pdf`}
+                href={`${import.meta.env.BASE_URL}resume/Sumit_Panchal_QA_Resume.pdf`}
                 download="Sumit_Panchal_QA_Resume.pdf"
                 onMouseEnter={() => setIsHovered(true)}
                 onMouseLeave={() => setIsHovered(false)}
@@ -412,7 +413,7 @@ export const HeroSection: React.FC = () => {
               duration: 1.2,
               ease: [0.16, 1, 0.3, 1],
             }}
-            className="hidden lg:flex flex-col items-start pointer-events-auto pr-24 xl:pr-36 mr-4 z-20 select-none"
+            className="hidden lg:flex flex-col items-start pointer-events-auto ml-auto pr-6 xl:pr-10 z-20 select-none"
           >
 
             <div
