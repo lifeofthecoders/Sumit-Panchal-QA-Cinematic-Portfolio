@@ -9,8 +9,8 @@
 </p>
 
 <p align="center">
-  <a href="https://lifeofthecoders.github.io/Sumit-Panchal-QA-Cinematic-Portfolio/">
-    🌐 <strong>View Live Portfolio</strong>
+  🌐 <a href="https://lifeofthecoders.github.io/Sumit-Panchal-QA-Cinematic-Portfolio/">
+    <strong>View Live Portfolio</strong>
   </a>
 </p>
 
@@ -336,8 +336,8 @@ Sumit-Panchal-QA-Cinematic-Portfolio/
 
 <p align="center">
 ### 🎥 Explore the Cinematic QA Portfolio
-<a href="https://lifeofthecoders.github.io/Sumit-Panchal-QA-Cinematic-Portfolio/">
-<strong>👉 OPEN LIVE PORTFOLIO</strong>
+👉 <a href="https://lifeofthecoders.github.io/Sumit-Panchal-QA-Cinematic-Portfolio/">
+<strong>OPEN LIVE PORTFOLIO</strong>
 </a>
 </p>
 
@@ -353,7 +353,9 @@ I bring a QA mindset that focuses not only on whether a feature works, but also 
 
 ---
 
-## 📫 Connect
+## 📫 Connect With Me
+
+If you'd like to connect, collaborate, or discuss QA and software testing, feel free to reach out.
 
 **Sumit Panchal**
 **Quality Analyst | Manual QA | Software Testing**
