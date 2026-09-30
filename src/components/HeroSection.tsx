@@ -196,7 +196,7 @@ export const HeroSection: React.FC = () => {
             ))}
           </nav>
 
-          {/* Desktop Let's Talk */}
+          {/* Desktop Let's Connect */}
           <a
             href="#contact"
             onMouseEnter={() => setIsHovered(true)}
@@ -204,7 +204,7 @@ export const HeroSection: React.FC = () => {
             className="hero-contact hidden md:flex items-center space-x-2 text-[11px] tracking-[0.24em] font-light uppercase py-2 px-4 border border-[#8C6D4F]/50 hover:border-[#D4AF37] text-[#EAD8C7] transition-all duration-300 backdrop-blur-sm ml-auto md:ml-0"
             style={{ fontFamily: "'Montserrat', sans-serif" }}
           >
-            <span>LET&apos;S TALK</span>
+            <span>LET&apos;S CONNECT</span>
 
             <span className="transform transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 text-xs">
               ↗

@@ -234,6 +234,24 @@ export const ContactSection: React.FC = () => {
 
                   <div className="flex items-center gap-3">
 
+                    {/* GitHub */}
+                    <a
+                      href="https://github.com/lifeofthecoders"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label="GitHub - Life of the Coders"
+                      className="group w-10 h-10 flex items-center justify-center border border-[#8C6D4F]/40 bg-[#100D0B] text-[#A8988B] hover:text-[#F7E7C4] hover:border-[#D4AF37] hover:bg-[#17130F] transition-all duration-300"
+                    >
+                      <svg
+                        width="17"
+                        height="17"
+                        viewBox="0 0 24 24"
+                        fill="currentColor"
+                      >
+                        <path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.57.1.78-.25.78-.55 0-.27-.01-1.16-.02-2.1-3.2.7-3.88-1.36-3.88-1.36-.52-1.33-1.28-1.68-1.28-1.68-1.04-.71.08-.7.08-.7 1.15.08 1.75 1.18 1.75 1.18 1.02 1.75 2.67 1.24 3.32.95.1-.74.4-1.24.73-1.53-2.55-.29-5.23-1.28-5.23-5.7 0-1.26.45-2.29 1.18-3.1-.12-.29-.51-1.47.11-3.06 0 0 .96-.31 3.15 1.18a10.9 10.9 0 0 1 5.74 0c2.19-1.49 3.15-1.18 3.15-1.18.62 1.59.23 2.77.11 3.06.73.81 1.18 1.84 1.18 3.1 0 4.43-2.69 5.4-5.25 5.69.41.35.78 1.04.78 2.1 0 1.52-.01 2.75-.01 3.12 0 .3.2.66.79.55A11.51 11.51 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5z" />
+                      </svg>
+                    </a>
+
                     {/* LinkedIn */}
                     <a
                       href="https://www.linkedin.com/in/sumit-panchal-b790a8236"
@@ -252,12 +270,34 @@ export const ContactSection: React.FC = () => {
                       </svg>
                     </a>
 
-                    {/* GitHub */}
+                    {/* Instagram */}
                     <a
-                      href="https://github.com/lifeofthecoders"
+                      href="https://www.instagram.com/workhard2livelarge?igsh=MmM0YmZvNHc0bDZ2"
                       target="_blank"
                       rel="noopener noreferrer"
-                      aria-label="GitHub - Life of the Coders"
+                      aria-label="Instagram - Work Hard 2 Live Large"
+                      className="group w-10 h-10 flex items-center justify-center border border-[#8C6D4F]/40 bg-[#100D0B] text-[#A8988B] hover:text-[#F7E7C4] hover:border-[#D4AF37] hover:bg-[#17130F] transition-all duration-300"
+                    >
+                      <svg
+                        width="17"
+                        height="17"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="1.7"
+                      >
+                        <rect x="3" y="3" width="18" height="18" rx="5" />
+                        <circle cx="12" cy="12" r="4" />
+                        <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none" />
+                      </svg>
+                    </a>
+
+                    {/* Facebook */}
+                    <a
+                      href="https://www.facebook.com/share/1BxMxaQsV8/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label="Facebook - Sumit Panchal"
                       className="group w-10 h-10 flex items-center justify-center border border-[#8C6D4F]/40 bg-[#100D0B] text-[#A8988B] hover:text-[#F7E7C4] hover:border-[#D4AF37] hover:bg-[#17130F] transition-all duration-300"
                     >
                       <svg
@@ -266,7 +306,26 @@ export const ContactSection: React.FC = () => {
                         viewBox="0 0 24 24"
                         fill="currentColor"
                       >
-                        <path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.57.1.78-.25.78-.55 0-.27-.01-1.16-.02-2.1-3.2.7-3.88-1.36-3.88-1.36-.52-1.33-1.28-1.68-1.28-1.68-1.04-.71.08-.7.08-.7 1.15.08 1.75 1.18 1.75 1.18 1.02 1.75 2.67 1.24 3.32.95.1-.74.4-1.24.73-1.53-2.55-.29-5.23-1.28-5.23-5.7 0-1.26.45-2.29 1.18-3.1-.12-.29-.51-1.47.11-3.06 0 0 .96-.31 3.15 1.18a10.9 10.9 0 0 1 5.74 0c2.19-1.49 3.15-1.18 3.15-1.18.62 1.59.23 2.77.11 3.06.73.81 1.18 1.84 1.18 3.1 0 4.43-2.69 5.4-5.25 5.69.41.35.78 1.04.78 2.1 0 1.52-.01 2.75-.01 3.12 0 .3.2.66.79.55A11.51 11.51 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5z" />
+                        <path d="M14 8h3V4h-3c-3.31 0-5 1.69-5 5v3H6v4h3v8h4v-8h3l1-4h-4V9c0-.67.33-1 1-1z" />
+                      </svg>
+                    </a>
+
+                    {/* Quora */}
+                    <a
+                      href="https://www.quora.com/profile/Sumit-Panchal-345"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label="Quora - Sumit Panchal"
+                      className="group w-10 h-10 flex items-center justify-center border border-[#8C6D4F]/40 bg-[#100D0B] text-[#A8988B] hover:text-[#F7E7C4] hover:border-[#D4AF37] hover:bg-[#17130F] transition-all duration-300"
+                    >
+                      <svg
+                        width="17"
+                        height="17"
+                        viewBox="0 0 24 24"
+                        fill="currentColor"
+                        aria-hidden="true"
+                      >
+                        <path d="M12.2 2C6.3 2 2.5 5.9 2.5 11.9c0 5.7 3.3 9.7 8.8 10.1 2.4.2 4.6-.5 6.2-1.8l1.4 1.8 2-1.6-2-2.5c1.1-1.7 1.7-3.7 1.7-6C20.6 5.9 17.7 2 12.2 2zm-.4 16.7c-3.1 0-5-2.6-5-6.8 0-4.4 2-7 5.2-7 3.1 0 5 2.6 5 7 0 1.5-.2 2.8-.7 3.9l-1.5-1.9-2 1.6 1.7 2.1c-.8.7-1.7 1.1-2.7 1.1z" />
                       </svg>
                     </a>
 
