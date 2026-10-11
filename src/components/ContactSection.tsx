@@ -198,7 +198,8 @@ export const ContactSection: React.FC = () => {
                     </span>
                   </a>
 
-                  {/* Phone */}
+                  {/* Phone contact temporarily hidden. */}
+                  {/*
                   <a
                     href="tel:+917359914454"
                     className="group flex items-center gap-3 text-xs text-[#A8988B] hover:text-[#F7E7C4] transition-colors"
@@ -220,6 +221,7 @@ export const ContactSection: React.FC = () => {
                       +91 73599 14454
                     </span>
                   </a>
+                  */}
 
                 </div>
 
@@ -480,6 +482,10 @@ export const ContactSection: React.FC = () => {
 
           <span className="text-[10px] font-mono tracking-widest text-[#8C6D4F] uppercase">
             QA PORTFOLIO // EDITION 2026
+          </span>
+
+          <span className="text-[10px] font-mono tracking-[0.18em] text-[#D4AF37]">
+            📡 ... ..- -- .. - / .--. .- -. -.-. .... .- .-.. 🛰️
           </span>
 
           <span className="text-[10px] font-mono text-[#8C6D4F]">

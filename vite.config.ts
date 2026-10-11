@@ -9,7 +9,6 @@ export default defineConfig({
     host: '0.0.0.0',
     port: 5173,
     strictPort: true,
-    open: '/Sumit-Panchal-QA-Cinematic-Portfolio/',
   },
   preview: {
     host: '0.0.0.0',
