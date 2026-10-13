@@ -6,6 +6,7 @@ export const ContactSection: React.FC = () => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
+    subject: '',
     message: '',
   });
 
@@ -30,6 +31,27 @@ export const ContactSection: React.FC = () => {
     setError('');
 
     try {
+      const submittedAtField =
+        formRef.current.querySelector<HTMLInputElement>('input[name="submitted_at"]');
+
+      if (!submittedAtField) {
+        throw new Error('Contact form submission timestamp field is missing.');
+      }
+
+      const formattedSubmissionTime = new Intl.DateTimeFormat('en-IN', {
+        day: 'numeric',
+        month: 'long',
+        year: 'numeric',
+        hour: 'numeric',
+        minute: '2-digit',
+        hour12: true,
+        timeZone: 'Asia/Kolkata',
+      })
+        .format(new Date())
+        .replace(/\b(am|pm)\b/i, (period) => period.toUpperCase());
+
+      submittedAtField.value = `${formattedSubmissionTime} IST`;
+
       await emailjs.sendForm(
         EMAILJS_SERVICE_ID,
         EMAILJS_TEMPLATE_ID,
@@ -43,6 +65,7 @@ export const ContactSection: React.FC = () => {
       setFormData({
         name: '',
         email: '',
+        subject: '',
         message: '',
       });
     } catch (err: unknown) {
@@ -378,6 +401,7 @@ export const ContactSection: React.FC = () => {
               </div>
             ) : (
               <form ref={formRef} onSubmit={handleSubmit} className="space-y-6">
+                <input type="hidden" name="submitted_at" defaultValue="" />
 
                 {/* Name + Email */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
@@ -426,6 +450,29 @@ export const ContactSection: React.FC = () => {
                     />
                   </div>
 
+                </div>
+
+                {/* Subject */}
+                <div>
+                  <span className="block text-[9.5px] font-mono tracking-[0.2em] uppercase text-[#8C6D4F] mb-2">
+                    // SUBJECT
+                  </span>
+
+                  <input
+                    type="text"
+                    name="subject"
+                    required
+                    value={formData.subject}
+                    onChange={(e) =>
+                      setFormData({
+                        ...formData,
+                        subject: e.target.value,
+                      })
+                    }
+                    placeholder="Your subject"
+                    className="w-full bg-[#120F0C] border border-[#8C6D4F]/30 focus:border-[#D4AF37] text-xs text-white placeholder-[#8C6D4F]/50 px-4 py-3 outline-none rounded-sm transition-colors"
+                    style={{ fontFamily: "'Montserrat', sans-serif" }}
+                  />
                 </div>
 
                 {/* Message */}
