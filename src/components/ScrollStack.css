@@ -1,0 +1,90 @@
+.scroll-stack-scroller {
+  position: relative;
+  width: 100%;
+  overflow: visible;
+}
+
+.scroll-stack-inner {
+  position: relative;
+  width: 100%;
+  padding-top: 4vh;
+  padding-bottom: 50vh;
+  overflow: visible;
+}
+
+.scroll-stack-card {
+  position: relative;
+  width: 100%;
+  box-sizing: border-box;
+  transform-origin: top center;
+  will-change: transform, filter;
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  overflow: hidden;
+}
+
+/* Desktop only — mask the overlap below the front card without changing its height */
+@media (min-width: 768px) {
+  .scroll-stack-card {
+    overflow: visible !important;
+  }
+
+  .scroll-stack-card::after {
+    content: '';
+    position: absolute;
+    top: calc(100% - 1px);
+    left: 0;
+    right: 0;
+    height: 72px;
+    background: #000;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .scroll-stack-card .project-card {
+    box-sizing: border-box;
+    overflow: hidden !important;
+    position: relative;
+    z-index: 1;
+    padding: 1.5rem !important;
+  }
+
+  .scroll-stack-card .project-card .grid {
+    gap: 1.25rem;
+  }
+
+  .scroll-stack-card .project-card-title {
+    margin-bottom: 0.5rem;
+  }
+
+  .scroll-stack-card .project-card p {
+    margin-bottom: 1.25rem;
+    line-height: 1.6;
+  }
+
+  .scroll-stack-card .project-card .flex.flex-wrap {
+    padding-top: 0.75rem;
+  }
+}
+
+/* Mobile — keep current working responsiveness (do not change) */
+@media (max-width: 767px) {
+  .scroll-stack-inner {
+    padding-top: 4vh;
+    padding-bottom: 28vh;
+  }
+
+  .scroll-stack-card {
+    height: auto !important;
+    min-height: 720px !important;
+    margin-bottom: 18px !important;
+    overflow: hidden !important;
+  }
+}
+
+.scroll-stack-end {
+  width: 100%;
+  height: 1px;
+}
